@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiba Tennessee | Luxury Wellness Resort Investment</title>
+  <meta name="description" content="Invest in Tiba Tennessee—a nature-led, ritual-focused landscape hotel in the Appalachian Highlands.">
+  <meta property="og:title" content="Tiba Tennessee | Luxury Wellness Resort Investment">
+  <meta property="og:description" content="A nature-led, ritual-focused landscape hotel in the Appalachian Highlands.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ========================================
+       CSS CUSTOM PROPERTIES
+    ======================================== */
+    :root {
+      --stone: #222323;
+      --ivory: #F0EEDC;
+      --offwhite: #F5F3E8;
+      --river-green: #A3996A;
+      --river-green-hover: #b8ad7a;
+      --white: #ffffff;
+      --font-serif: 'Libre Baskerville', 'Baskerville', Georgia, serif;
+      --font-sans: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+    /* ========================================
+       RESET & BASE
+    ======================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--stone);
+      background: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { border: none; background: none; cursor: pointer; font-family: inherit; }
+
+    /* ========================================
+       UTILITY CLASSES
+    ======================================== */
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 4vw, 64px);
+    }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); border: 0;
+    }
+
+    /* ========================================
+       REVEAL ANIMATIONS
+    ======================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+    }
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ========================================
+       NAVIGATION
+    ======================================== */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: background-color 0.5s var(--ease-out), padding 0.4s var(--ease-out), backdrop-filter 0.5s var(--ease-out);
+    }
+    .navbar.scrolled {
+      background-color: rgba(34, 35, 35, 0.97);
+      backdrop-filter: blur(12px);
+      padding: 14px 0;
+    }
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .navbar__logo img {
+      height: 28px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      transition: height 0.4s var(--ease-out);
+    }
+    .navbar.scrolled .navbar__logo img { height: 24px; }
+
+    .navbar__links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .navbar__links a {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      opacity: 0.85;
+      transition: opacity 0.3s;
+      position: relative;
+    }
+    .navbar__links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--river-green);
+      transition: width 0.3s var(--ease-out);
+    }
+    .navbar__links a:hover { opacity: 1; }
+    .navbar__links a:hover::after { width: 100%; }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: var(--river-green);
+      color: var(--stone);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      transition: background 0.3s, transform 0.3s var(--ease-out);
+    }
+    .btn-cta:hover {
+      background: var(--river-green-hover);
+      transform: translateY(-1px);
+    }
+    .btn-cta svg {
+      width: 14px; height: 14px;
+      transition: transform 0.3s var(--ease-out);
+    }
+    .btn-cta:hover svg { transform: translateX(3px); }
+
+    /* Hamburger */
+    .navbar__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 8px;
+      cursor: pointer;
+    }
+    .navbar__hamburger span {
+      display: block;
+      width: 24px; height: 1.5px;
+      background: var(--ivory);
+      transition: transform 0.3s var(--ease-out), opacity 0.3s;
+    }
+    .navbar__hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(4px, 5px);
+    }
+    .navbar__hamburger.active span:nth-child(2) { opacity: 0; }
+    .navbar__hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(4px, -5px);
+    }
+
+    /* Mobile menu overlay */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(34, 35, 35, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      opacity: 0;
+      transition: opacity 0.4s var(--ease-out);
+    }
+    .mobile-menu.active {
+      display: flex;
+      opacity: 1;
+    }
+    .mobile-menu a {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      color: var(--ivory);
+      opacity: 0.9;
+      transition: opacity 0.3s;
+    }
+    .mobile-menu a:hover { opacity: 1; }
+
+    /* ========================================
+       HERO SECTION
+    ======================================== */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      background: var(--stone);
+    }
+    .hero__lower {
+      position: relative;
+      z-index: 2;
+    }
+    .hero__video {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+    }
+    .hero__sound-toggle {
+      position: absolute;
+      bottom: clamp(100px, 14vw, 160px);
+      right: clamp(20px, 3vw, 40px);
+      z-index: 4;
+      background: rgba(240, 238, 220, 0.1);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(240, 238, 220, 0.15);
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--ivory);
+      transition: background 0.3s ease, transform 0.3s ease;
+      animation: soundPulse 2.5s ease-in-out infinite;
+    }
+    .hero__sound-toggle:hover {
+      background: rgba(240, 238, 220, 0.18);
+      transform: scale(1.08);
+    }
+    .hero__sound-toggle.unmuted {
+      animation: none;
+      background: rgba(240, 238, 220, 0.08);
+    }
+    .hero__sound-icon {
+      width: 20px;
+      height: 20px;
+    }
+    @keyframes soundPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(240, 238, 220, 0.2); }
+      50% { box-shadow: 0 0 0 8px rgba(240, 238, 220, 0); }
+    }
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(34, 35, 35, 0.15) 0%,
+        rgba(34, 35, 35, 0.3) 50%,
+        rgba(34, 35, 35, 0.75) 100%
+      );
+    }
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: clamp(32px, 4vh, 56px);
+    }
+    .hero__headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2.6rem, 5.5vw, 5rem);
+      font-weight: 400;
+      color: var(--ivory);
+      line-height: 1.15;
+      margin-bottom: 20px;
+      max-width: 800px;
+    }
+    .hero__sub {
+      font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+      font-weight: 300;
+      color: var(--ivory);
+      opacity: 0.8;
+      max-width: 580px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .hero__press {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .hero__press-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      opacity: 0.5;
+    }
+    .hero__press-logos {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .hero__press-logos span {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ivory);
+      opacity: 0.7;
+      letter-spacing: 0.04em;
+    }
+    .hero__press-logos .press-divider {
+      width: 1px; height: 14px;
+      background: var(--ivory);
+      opacity: 0.25;
+      font-size: 0;
+    }
+    .hero__cta-wrap {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .btn-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 36px;
+      border: 1px solid rgba(240, 238, 220, 0.3);
+      border-radius: 50px;
+      color: var(--ivory);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: background 0.4s, border-color 0.4s;
+    }
+    .btn-hero:hover {
+      background: rgba(240, 238, 220, 0.08);
+      border-color: rgba(240, 238, 220, 0.5);
+    }
+    .btn-hero svg {
+      width: 16px; height: 16px;
+      transition: transform 0.3s var(--ease-out);
+    }
+    .btn-hero:hover svg { transform: translateY(3px); }
+
+    /* Hero bottom metrics bar */
+    .hero__metrics {
+      position: relative;
+      z-index: 2;
+      border-top: 1px solid rgba(240, 238, 220, 0.1);
+      padding: 28px 0;
+    }
+    .hero__metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+    .hero__metrics-item {
+      position: relative;
+      padding: 16px 24px;
+      border-radius: 8px;
+      transition: background 0.35s ease, transform 0.35s ease;
+      cursor: default;
+    }
+    .hero__metrics-item:hover {
+      background: rgba(240, 238, 220, 0.06);
+      transform: translateY(-2px);
+    }
+    .hero__metrics-item:hover .hero__metrics-number {
+      color: var(--river-green);
+    }
+    .hero__metrics-item:hover .hero__metrics-label {
+      opacity: 0.7;
+    }
+    .hero__metrics-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 15%;
+      width: 1px; height: 70%;
+      background: var(--ivory);
+      opacity: 0.12;
+    }
+    .hero__metrics-number {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+      font-weight: 400;
+      color: var(--ivory);
+      line-height: 1.1;
+      margin-bottom: 6px;
+      transition: color 0.35s ease;
+    }
+    .hero__metrics-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      opacity: 0.45;
+      transition: opacity 0.35s ease;
+    }
+
+    /* ========================================
+       CONCEPT / EXPERIENCE SECTION
+    ======================================== */
+    .concept {
+      background: var(--stone);
+      padding: clamp(80px, 10vw, 160px) 0;
+      overflow: hidden;
+    }
+    .concept__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 5vw, 80px);
+      align-items: center;
+    }
+    .concept__text { }
+    .concept__badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--river-green);
+      margin-bottom: 24px;
+      position: relative;
+      padding-left: 32px;
+    }
+    .concept__badge::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 50%;
+      width: 20px; height: 1px;
+      background: var(--river-green);
+    }
+    .concept__headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 400;
+      color: var(--ivory);
+      line-height: 1.2;
+      margin-bottom: 28px;
+    }
+    .concept__copy {
+      font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+      font-weight: 300;
+      color: var(--ivory);
+      opacity: 0.7;
+      line-height: 1.8;
+      max-width: 520px;
+    }
+    .concept__images {
+      position: relative;
+      height: clamp(400px, 50vw, 620px);
+    }
+    .concept__img-1 {
+      position: absolute;
+      top: 0; left: 0;
+      width: 72%;
+      height: 70%;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+    .concept__img-2 {
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 58%;
+      height: 52%;
+      object-fit: cover;
+      border-radius: 2px;
+      border: 3px solid var(--stone);
+    }
+
+    /* ========================================
+       ASSET SHOWCASE
+    ======================================== */
+    .showcase {
+      background: var(--offwhite);
+      padding: clamp(80px, 10vw, 160px) 0;
+    }
+    .section-header {
+      margin-bottom: clamp(48px, 5vw, 72px);
+    }
+    .section-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--river-green);
+      margin-bottom: 16px;
+      position: relative;
+      padding-left: 32px;
+    }
+    .section-badge::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 50%;
+      width: 20px; height: 1px;
+      background: var(--river-green);
+    }
+    .section-badge.light { color: var(--river-green); }
+    .section-badge.light::before { background: var(--river-green); }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--stone);
+    }
+    .section-title.light { color: var(--ivory); }
+
+    .showcase__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .showcase__card {
+      background: var(--white);
+      border-radius: 3px;
+      overflow: hidden;
+      transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
+    }
+    .showcase__card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 64px rgba(34, 35, 35, 0.1);
+    }
+    .showcase__card-img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease-out);
+    }
+    .showcase__card:hover .showcase__card-img {
+      transform: scale(1.03);
+    }
+    .showcase__card-img-wrap {
+      overflow: hidden;
+    }
+    .showcase__card-body {
+      padding: 28px 28px 32px;
+    }
+    .showcase__card-title {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 12px;
+      color: var(--stone);
+    }
+    .showcase__card-desc {
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--stone);
+      opacity: 0.65;
+    }
+
+    /* ========================================
+       OPPORTUNITY CARDS (WHY INVEST)
+    ======================================== */
+    .opportunity {
+      background: var(--stone);
+      padding: clamp(80px, 10vw, 160px) 0;
+    }
+    .opportunity__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .opportunity__card {
+      border: 1px solid rgba(240, 238, 220, 0.12);
+      border-radius: 3px;
+      padding: clamp(32px, 3vw, 48px);
+      transition: border-color 0.4s, background 0.4s;
+    }
+    .opportunity__card:hover {
+      border-color: rgba(163, 153, 106, 0.4);
+      background: rgba(240, 238, 220, 0.03);
+    }
+    .opportunity__icon {
+      width: 44px; height: 44px;
+      margin-bottom: 28px;
+      color: var(--river-green);
+    }
+    .opportunity__card-title {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--ivory);
+      margin-bottom: 16px;
+    }
+    .opportunity__card-desc {
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--ivory);
+      opacity: 0.6;
+    }
+
+    /* ========================================
+       VIDEO PITCH SECTION
+    ======================================== */
+    .video-pitch {
+      background: var(--offwhite);
+      padding: clamp(80px, 10vw, 140px) 0;
+    }
+    .video-pitch__inner {
+      text-align: center;
+    }
+    .video-pitch__wrap {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--stone);
+      aspect-ratio: 16/9;
+    }
+    .video-pitch__video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .video-pitch__play {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(34, 35, 35, 0.35);
+      cursor: pointer;
+      transition: background 0.4s;
+    }
+    .video-pitch__play:hover { background: rgba(34, 35, 35, 0.2); }
+    .video-pitch__play-btn {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: var(--river-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.4s var(--ease-out);
+    }
+    .video-pitch__play:hover .video-pitch__play-btn {
+      transform: scale(1.1);
+    }
+    .video-pitch__play-btn svg {
+      width: 24px; height: 24px;
+      color: var(--stone);
+      margin-left: 3px;
+    }
+    .video-pitch__play.hidden { display: none; }
+
+    /* ========================================
+       LOCATION SECTION
+    ======================================== */
+    .location {
+      background: var(--white);
+      padding: clamp(80px, 10vw, 160px) 0;
+    }
+    .location__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 5vw, 80px);
+      align-items: center;
+    }
+    .location__text { }
+    .location__copy {
+      font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+      font-weight: 300;
+      color: var(--stone);
+      opacity: 0.6;
+      line-height: 1.8;
+      max-width: 460px;
+      margin-top: 20px;
+    }
+    .location__map {
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .location__map img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 3px;
+    }
+
+    /* ========================================
+       TIMELINE / ROADMAP
+    ======================================== */
+    .timeline {
+      background: var(--stone);
+      padding: clamp(80px, 10vw, 140px) 0;
+      color: var(--ivory);
+    }
+    .timeline .section-badge {
+      color: var(--ivory);
+      border-color: rgba(240, 238, 220, 0.25);
+    }
+    .timeline .section-title {
+      color: var(--ivory);
+    }
+    .timeline__layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(48px, 6vw, 80px);
+      margin-top: clamp(48px, 5vw, 72px);
+      align-items: start;
+    }
+    .timeline__left {
+      position: sticky;
+      top: 120px;
+    }
+    .timeline__heading {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      font-weight: 400;
+      color: var(--ivory);
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .timeline__subheading {
+      font-family: var(--font-sans);
+      font-size: clamp(0.85rem, 1vw, 1rem);
+      color: var(--ivory);
+      opacity: 0.5;
+      font-weight: 400;
+    }
+    .timeline__track {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      padding-left: 32px;
+    }
+    .timeline__track::before {
+      content: '';
+      position: absolute;
+      top: 8px; bottom: 8px;
+      left: 6px;
+      width: 2px;
+      background: rgba(240, 238, 220, 0.15);
+    }
+    .timeline__item {
+      position: relative;
+      padding: clamp(28px, 3vw, 40px) 0;
+      border-bottom: 1px solid rgba(240, 238, 220, 0.08);
+    }
+    .timeline__item:last-child {
+      border-bottom: none;
+    }
+    .timeline__dot {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: rgba(240, 238, 220, 0.2);
+      position: absolute;
+      left: -32px; top: clamp(32px, 3vw, 44px);
+      transform: translateX(-1px);
+      z-index: 1;
+    }
+    .timeline__item.completed .timeline__dot {
+      background: var(--ivory);
+    }
+    .timeline__item.current .timeline__dot {
+      background: var(--river-green);
+      box-shadow: 0 0 0 6px rgba(163, 153, 106, 0.2);
+    }
+    .timeline__title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+      font-weight: 400;
+      color: var(--ivory);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 10px;
+    }
+    .timeline__desc {
+      font-family: var(--font-sans);
+      font-size: clamp(0.78rem, 0.9vw, 0.88rem);
+      color: var(--ivory);
+      opacity: 0.5;
+      line-height: 1.6;
+      max-width: 420px;
+    }
+
+    /* ========================================
+       FOOTER / LEAD CAPTURE
+    ======================================== */
+    .footer {
+      background: var(--stone);
+      padding: clamp(80px, 10vw, 140px) 0 0;
+    }
+    .footer__form-section {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+      padding-bottom: clamp(80px, 10vw, 120px);
+    }
+    .footer__form-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 400;
+      color: var(--ivory);
+      margin-bottom: 12px;
+    }
+    .footer__form-sub {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--ivory);
+      opacity: 0.5;
+      margin-bottom: 40px;
+    }
+    .footer__form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .footer__input,
+    .footer__select {
+      padding: 16px 20px;
+      background: rgba(240, 238, 220, 0.06);
+      border: 1px solid rgba(240, 238, 220, 0.12);
+      border-radius: 3px;
+      color: var(--ivory);
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 300;
+      transition: border-color 0.3s;
+      outline: none;
+    }
+    .footer__input::placeholder { color: var(--ivory); opacity: 0.35; }
+    .footer__input:focus,
+    .footer__select:focus {
+      border-color: var(--river-green);
+    }
+    .footer__select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23F0EEDC' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+    .footer__select option { background: var(--stone); color: var(--ivory); }
+    .footer__submit {
+      grid-column: 1 / -1;
+      padding: 16px 36px;
+      background: var(--river-green);
+      color: var(--stone);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s var(--ease-out);
+      border: none;
+      font-family: var(--font-sans);
+      margin-top: 4px;
+    }
+    .footer__submit:hover {
+      background: var(--river-green-hover);
+      transform: translateY(-1px);
+    }
+
+    .footer__bottom {
+      border-top: 1px solid rgba(240, 238, 220, 0.08);
+      padding: 40px 0;
+    }
+    .footer__bottom-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .footer__logo img {
+      height: 80px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.6;
+    }
+    .footer__links {
+      display: flex;
+      gap: 48px;
+    }
+    .footer__link-group h4 {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      opacity: 0.4;
+      margin-bottom: 16px;
+    }
+    .footer__link-group a {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--ivory);
+      opacity: 0.6;
+      margin-bottom: 10px;
+      transition: opacity 0.3s;
+    }
+    .footer__link-group a:hover { opacity: 1; }
+    .footer__disclaimer {
+      border-top: 1px solid rgba(240, 238, 220, 0.06);
+      padding: 24px 0;
+      text-align: center;
+    }
+    .footer__disclaimer p {
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: var(--ivory);
+      opacity: 0.3;
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       RESPONSIVE
+    ======================================== */
+    @media (max-width: 1024px) {
+      .showcase__grid { grid-template-columns: 1fr; max-width: 560px; }
+      .opportunity__grid { grid-template-columns: 1fr; max-width: 560px; }
+      .concept__inner { grid-template-columns: 1fr; }
+      .concept__images { height: 400px; }
+      .location__inner { grid-template-columns: 1fr; }
+
+    }
+
+    @media (max-width: 768px) {
+      .navbar__links { display: none; }
+      .navbar .btn-cta.desktop-only { display: none; }
+      .navbar__hamburger { display: flex; }
+
+      .hero__metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 16px;
+      }
+      .hero__metrics-item:not(:last-child)::after { display: none; }
+      .hero__metrics { padding: 20px 0; }
+
+      .hero__headline { font-size: clamp(2rem, 7vw, 2.8rem); }
+
+      .timeline__layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .timeline__left {
+        position: static;
+        text-align: center;
+      }
+
+      .footer__form { grid-template-columns: 1fr; }
+      .footer__bottom-inner { flex-direction: column; align-items: center; text-align: center; }
+      .footer__links { flex-direction: column; gap: 32px; align-items: center; }
+
+      .showcase__card-img { height: 220px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero__press-logos { gap: 16px; }
+      .hero__press-logos span { font-size: 0.82rem; }
+      .concept__images { height: 320px; }
+      .concept__img-1 { width: 85%; height: 60%; }
+      .concept__img-2 { width: 65%; height: 48%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="navbar__logo">
+        <img src="TIBA_FINAL_LOGO_LANDSCAPE (3) (13).png" alt="Tiba Living">
+      </a>
+      <ul class="navbar__links">
+        <li><a href="#concept">Vision</a></li>
+        <li><a href="#showcase">The Asset</a></li>
+        <li><a href="#location">Location</a></li>
+      </ul>
+      <a href="#footer" class="btn-cta desktop-only">
+        Request Deck
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <div class="navbar__hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#concept" onclick="closeMobile()">Vision</a>
+    <a href="#showcase" onclick="closeMobile()">The Asset</a>
+    <a href="#location" onclick="closeMobile()">Location</a>
+    <a href="#footer" class="btn-cta" onclick="closeMobile()">Request Deck</a>
+  </div>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <video class="hero__video" id="heroVideo" autoplay muted loop playsinline poster="Renders/LOBBY _ SUITES 2 (3).jpg">
+        <source src="new hero vid.MOV" type="video/mp4">
+      </video>
+      <button class="hero__sound-toggle" id="heroSoundToggle" aria-label="Unmute video">
+        <svg class="hero__sound-icon hero__sound-icon--muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+          <line x1="23" y1="9" x2="17" y2="15"/>
+          <line x1="17" y1="9" x2="23" y2="15"/>
+        </svg>
+        <svg class="hero__sound-icon hero__sound-icon--on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+          <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+          <path d="M19.07 4.93a10 10 0 010 14.14"/>
+          <path d="M15.54 8.46a5 5 0 010 7.07"/>
+        </svg>
+      </button>
+      <div class="hero__overlay"></div>
+      <div class="hero__lower">
+        <div class="hero__content container">
+          <h1 class="hero__headline reveal">A Retreat Beyond<br>the City's Reach</h1>
+          <p class="hero__sub reveal reveal-delay-1">Investing in the future of nature-led wellness hospitality in the Appalachian Highlands.</p>
+          <div class="hero__press reveal reveal-delay-2">
+            <span class="hero__press-label">As seen in</span>
+            <div class="hero__press-logos">
+              <span>FORBES</span>
+              <span class="press-divider">&nbsp;</span>
+              <span>MSN</span>
+              <span class="press-divider">&nbsp;</span>
+              <span>AP NEWS</span>
+            </div>
+          </div>
+          <div class="hero__cta-wrap reveal reveal-delay-3">
+            <a href="#concept" class="btn-hero">
+              Discover the Opportunity
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="hero__metrics">
+          <div class="container">
+            <div class="hero__metrics-grid">
+              <div class="hero__metrics-item">
+                <div class="hero__metrics-number" data-target="57">0</div>
+                <div class="hero__metrics-label">Acres of Private Nature</div>
+              </div>
+              <div class="hero__metrics-item">
+                <div class="hero__metrics-number" data-target="45">0</div>
+                <div class="hero__metrics-label">Lakeside Suites</div>
+              </div>
+              <div class="hero__metrics-item">
+                <div class="hero__metrics-number" data-target="30.6" data-suffix="%" data-decimal="1">0</div>
+                <div class="hero__metrics-label">IRR</div>
+              </div>
+              <div class="hero__metrics-item">
+                <div class="hero__metrics-number" data-target="3.29" data-suffix="x" data-decimal="2">0</div>
+                <div class="hero__metrics-label">MOIC</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONCEPT / EXPERIENCE ============ -->
+    <section class="concept" id="concept">
+      <div class="container">
+        <div class="concept__inner">
+          <div class="concept__text">
+            <div class="concept__badge reveal">The Vision</div>
+            <h2 class="concept__headline reveal reveal-delay-1">Wellness by Design,<br>Stillness by Nature</h2>
+            <p class="concept__copy reveal reveal-delay-2">A destination where silence is the main amenity. We create a playground with intention, discovering equilibrium between venue and nature. A return to yourself—through the land, through ritual, through stillness.</p>
+          </div>
+          <div class="concept__images reveal reveal-delay-2">
+            <img class="concept__img-1" src="Renders/LOBBY _ SUITES 2 (3).jpg" alt="Aerial view of the infinity lake pool and lakeside suites" loading="lazy">
+            <img class="concept__img-2" src="Renders/038 (3) (4).jpg" alt="Luxury suite interior with natural materials" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ASSET SHOWCASE ============ -->
+    <section class="showcase" id="showcase">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge reveal">The Asset</div>
+          <h2 class="section-title reveal reveal-delay-1">A Landscape Hotel,<br>Designed for the Elements</h2>
+        </div>
+        <div class="showcase__grid">
+          <div class="showcase__card reveal">
+            <div class="showcase__card-img-wrap">
+              <img class="showcase__card-img" src="Renders/LAKESIDE SUITE.jpg" alt="Lakeside Suite exterior on the water" loading="lazy">
+            </div>
+            <div class="showcase__card-body">
+              <h3 class="showcase__card-title">Lakeside Suites</h3>
+              <p class="showcase__card-desc">Waterfront luxury featuring private decks, jacuzzis, and an elemental build designed to immerse guests in the land.</p>
+            </div>
+          </div>
+          <div class="showcase__card reveal reveal-delay-1">
+            <div class="showcase__card-img-wrap">
+              <img class="showcase__card-img" src="Renders/LOBBY _ SUITES 1.jpg. (4).jpg" alt="The Lobby with fire-cooking kitchen and gathering spaces" loading="lazy">
+            </div>
+            <div class="showcase__card-body">
+              <h3 class="showcase__card-title">The Lobby</h3>
+              <p class="showcase__card-desc">The heart of the retreat featuring fire-cooking kitchens, wine bars, and gathering spaces designed for connection.</p>
+            </div>
+          </div>
+          <div class="showcase__card reveal reveal-delay-2">
+            <div class="showcase__card-img-wrap">
+              <img class="showcase__card-img" src="Renders/Lakeside Suite Interior (2).jpg" alt="Wellness and nature experience" loading="lazy">
+            </div>
+            <div class="showcase__card-body">
+              <h3 class="showcase__card-title">Nature &amp; Wellness</h3>
+              <p class="showcase__card-desc">Not just a spa, but a connection to the land. Ice-baths, sound healing, and nature trails that allow the elements to restore you.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ OPPORTUNITY / WHY INVEST ============ -->
+    <section class="opportunity" id="opportunity">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge light reveal">The Opportunity</div>
+          <h2 class="section-title light reveal reveal-delay-1">Why Invest in Tiba Tennessee</h2>
+        </div>
+        <div class="opportunity__grid">
+          <div class="opportunity__card reveal">
+            <svg class="opportunity__icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 38 L16 18 L22 26 L30 10 L38 38"/>
+              <path d="M6 38 L38 38"/>
+            </svg>
+            <h3 class="opportunity__card-title">The Wellness Boom</h3>
+            <p class="opportunity__card-desc">Capitalizing on the underserved U.S. market for design-led, nature-first hospitality. The global wellness tourism market has exceeded $1 trillion and continues to outpace traditional hospitality growth.</p>
+          </div>
+          <div class="opportunity__card reveal reveal-delay-1">
+            <svg class="opportunity__icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 36 L22 8 L36 36"/>
+              <path d="M14 24 L30 24"/>
+              <circle cx="22" cy="30" r="3"/>
+            </svg>
+            <h3 class="opportunity__card-title">Shared Upside</h3>
+            <p class="opportunity__card-desc">A phased retreat — the first 24 units form Phase One, establishing Tiba's identity and operations. Early investors participate fully as Phase Two activates, expanding the hotel to 45 units and multiplying long-term value.</p>
+          </div>
+          <div class="opportunity__card reveal reveal-delay-2">
+            <svg class="opportunity__icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="8" width="32" height="28" rx="2"/>
+              <path d="M6 16 L38 16"/>
+              <path d="M16 8 L16 16"/>
+              <path d="M28 8 L28 16"/>
+              <path d="M15 24 L22 30 L30 22"/>
+            </svg>
+            <h3 class="opportunity__card-title">High-Value Asset</h3>
+            <p class="opportunity__card-desc">A model built for high ADR and diversified revenue streams: design-led suites with premium upsell packages, ritual-led dining by Tavolo Group, and wellness retreats ideal for boutique gatherings and high-yield groups.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VIDEO PITCH ============ -->
+    <section class="video-pitch" id="video-pitch">
+      <div class="container">
+        <div class="section-header" style="text-align: center;">
+          <div class="section-badge reveal" style="margin: 0 auto 16px;">The Pitch</div>
+          <h2 class="section-title reveal reveal-delay-1">Hear the Vision</h2>
+        </div>
+        <div class="video-pitch__inner">
+          <div class="video-pitch__wrap reveal reveal-delay-2">
+            <video class="video-pitch__video" id="pitchVideo" preload="metadata" playsinline poster="Renders/Lakeside Suite Facade (2).png">
+              <source src="Video Pitch.mp4" type="video/mp4">
+            </video>
+            <div class="video-pitch__play" id="pitchPlay">
+              <div class="video-pitch__play-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="8,5 20,12 8,19"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LOCATION ============ -->
+    <section class="location" id="location">
+      <div class="container">
+        <div class="location__inner">
+          <div class="location__text">
+            <div class="section-badge reveal">The Location</div>
+            <h2 class="section-title reveal reveal-delay-1">Rooted in the Land</h2>
+            <p class="location__copy reveal reveal-delay-2">Tennessee, USA. A destination to arrive, and feel whole. Nestled within 57 acres of private Appalachian wilderness, where stillness meets the water's edge.</p>
+          </div>
+          <div class="location__map reveal reveal-delay-2">
+            <img src="694130dacf3e3eec45667c0f_Untitled design (1)-p-2600.jpg" alt="Aerial site map of Tiba Tennessee property" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TIMELINE ============ -->
+    <section class="timeline" id="timeline">
+      <div class="container">
+        <div class="section-header" style="text-align: center;">
+          <div class="section-badge reveal" style="margin: 0 auto 16px;">Milestones</div>
+        </div>
+        <div class="timeline__layout">
+          <div class="timeline__left reveal">
+            <div class="timeline__heading">Traction</div>
+            <div class="timeline__subheading">Project Progress and Interest</div>
+          </div>
+          <div class="timeline__track">
+            <div class="timeline__item completed reveal">
+              <div class="timeline__dot"></div>
+              <div class="timeline__title">Land Asset Acquired</div>
+              <div class="timeline__desc">High-impact value adds: including securing land-use approvals, engineering, septic and wastewater plan, establishing utility access, grading plans, completing surveys and environmental studies.</div>
+            </div>
+            <div class="timeline__item completed reveal reveal-delay-1">
+              <div class="timeline__dot"></div>
+              <div class="timeline__title">GP Funded $1M+</div>
+              <div class="timeline__desc">All pre-construction funds covered, shovel-ready project.</div>
+            </div>
+            <div class="timeline__item completed reveal reveal-delay-2">
+              <div class="timeline__dot"></div>
+              <div class="timeline__title">Forbes, MSN, &amp; Wider Recognition</div>
+              <div class="timeline__desc">International and esteemed recognition of how Tiba is impacting the industry.</div>
+            </div>
+            <div class="timeline__item current reveal reveal-delay-3">
+              <div class="timeline__dot"></div>
+              <div class="timeline__title">Breaking Ground — 2026</div>
+              <div class="timeline__desc">Construction begins on the Tiba Tennessee retreat in the Appalachian Highlands.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER / LEAD CAPTURE ============ -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer__form-section">
+        <h2 class="footer__form-title reveal">Request the Investor Deck</h2>
+        <p class="footer__form-sub reveal reveal-delay-1">Learn more about the opportunity at Tiba Tennessee.</p>
+        <form class="footer__form reveal reveal-delay-2" id="deckForm" onsubmit="return handleSubmit(event)">
+          <input class="footer__input" type="text" name="name" placeholder="Full Name" required>
+          <input class="footer__input" type="email" name="email" placeholder="Email Address" required>
+          <select class="footer__select" name="investor_type" required>
+            <option value="" disabled selected>Investor Type</option>
+            <option value="angel">Angel Investor</option>
+            <option value="vc">Venture Capital</option>
+            <option value="pe">Private Equity</option>
+            <option value="family_office">Family Office</option>
+            <option value="other">Other</option>
+          </select>
+          <input class="footer__input" type="tel" name="phone" placeholder="Phone Number">
+          <button class="footer__submit" type="submit">Request Deck</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <div class="footer__bottom-inner">
+          <div class="footer__logo">
+            <img src="TIBA_FINAL_LOGO_PORTRAIT (2).png" alt="Tiba Living">
+          </div>
+          <div class="footer__links">
+            <div class="footer__link-group">
+              <h4>Navigate</h4>
+              <a href="#concept">Vision</a>
+              <a href="#showcase">The Asset</a>
+              <a href="#location">Location</a>
+            </div>
+            <div class="footer__link-group">
+              <h4>Social</h4>
+              <a href="https://tibaliving.com" target="_blank" rel="noopener">Tiba Living</a>
+              <a href="https://instagram.com/tiba_tennessee" target="_blank" rel="noopener">Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer__disclaimer">
+      <div class="container">
+        <p>This website is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any securities. Any such offer may only be made through the project's official offering documents. Investing in real estate and hospitality projects involves significant risk, including the potential loss of principal. Past performance is not indicative of future results.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ JAVASCRIPT ============ -->
+  <script>
+    // ---- Navbar scroll behavior ----
+    const navbar = document.getElementById('navbar');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    }, { passive: true });
+
+    // ---- Mobile menu ----
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+    function closeMobile() {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // ---- Scroll reveal ----
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ---- Number count-up ----
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseFloat(el.dataset.target);
+          const decimals = parseInt(el.dataset.decimal || '0');
+          const suffix = el.dataset.suffix || '';
+          const duration = 2000;
+          const start = performance.now();
+
+          function update(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = eased * target;
+            el.textContent = current.toFixed(decimals) + suffix;
+            if (progress < 1) requestAnimationFrame(update);
+          }
+          requestAnimationFrame(update);
+          countObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.hero__metrics-number').forEach(el => countObserver.observe(el));
+
+    // ---- Video pitch play/pause ----
+    const pitchVideo = document.getElementById('pitchVideo');
+    const pitchPlay = document.getElementById('pitchPlay');
+    if (pitchPlay && pitchVideo) {
+      pitchPlay.addEventListener('click', () => {
+        pitchVideo.play();
+        pitchVideo.controls = true;
+        pitchPlay.classList.add('hidden');
+      });
+      pitchVideo.addEventListener('pause', () => {
+        if (pitchVideo.currentTime > 0 && !pitchVideo.ended) {
+          pitchPlay.classList.remove('hidden');
+          pitchVideo.controls = false;
+        }
+      });
+      pitchVideo.addEventListener('ended', () => {
+        pitchPlay.classList.remove('hidden');
+        pitchVideo.controls = false;
+      });
+    }
+
+    // ---- Hero video: autoplay with sound, click to pause, pause when out of view ----
+    const heroVideo = document.getElementById('heroVideo');
+    const soundToggle = document.getElementById('heroSoundToggle');
+    const iconMuted = soundToggle?.querySelector('.hero__sound-icon--muted');
+    const iconOn = soundToggle?.querySelector('.hero__sound-icon--on');
+
+    function updateSoundIcon() {
+      if (!soundToggle) return;
+      if (heroVideo.muted) {
+        iconMuted.style.display = '';
+        iconOn.style.display = 'none';
+        soundToggle.classList.remove('unmuted');
+      } else {
+        iconMuted.style.display = 'none';
+        iconOn.style.display = '';
+        soundToggle.classList.add('unmuted');
+      }
+    }
+
+    if (heroVideo) {
+      // Sound toggle button
+      if (soundToggle) {
+        soundToggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          heroVideo.muted = !heroVideo.muted;
+          updateSoundIcon();
+        });
+      }
+
+      // Click/tap on video to toggle play/pause
+      let userPaused = false;
+      heroVideo.addEventListener('click', () => {
+        if (heroVideo.paused) {
+          heroVideo.muted = false;
+          userPaused = false;
+          heroVideo.play();
+          updateSoundIcon();
+        } else {
+          userPaused = true;
+          heroVideo.pause();
+        }
+      });
+
+      // Pause video+audio only when hero is fully out of view, resume when back
+      const heroSection = document.getElementById('hero');
+      const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) {
+            heroVideo.pause();
+          } else if (!userPaused) {
+            heroVideo.play();
+          }
+        });
+      }, { threshold: 0 });
+      heroObserver.observe(heroSection);
+    }
+
+    // ---- Form handling — sends to luke@tibaliving.com via mailto ----
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      const name = data.get('name');
+      const email = data.get('email');
+      const investorType = data.get('investor_type');
+      const phone = data.get('phone') || 'Not provided';
+
+      const subject = encodeURIComponent('Investor Deck Request — ' + name);
+      const body = encodeURIComponent(
+        'New investor deck request:\n\n' +
+        'Name: ' + name + '\n' +
+        'Email: ' + email + '\n' +
+        'Investor Type: ' + investorType + '\n' +
+        'Phone: ' + phone
+      );
+
+      window.location.href = 'mailto:luke@tibaliving.com?subject=' + subject + '&body=' + body;
+      alert('Thank you for your interest. Our team will be in touch shortly.');
+      form.reset();
+      return false;
+    }
+  </script>
+
+</body>
+</html>
