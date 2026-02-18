@@ -6,11 +6,29 @@
   <link rel="preconnect" href="https://player.vimeo.com">
   <link rel="preconnect" href="https://i.vimeocdn.com">
   <link rel="preconnect" href="https://f.vimeocdn.com">
+  <link rel="preload" as="image" href="images/hero-poster-1920.jpg"
+    imagesrcset="images/hero-poster-800.jpg 800w, images/hero-poster-1200.jpg 1200w, images/hero-poster-1920.jpg 1920w"
+    imagesizes="100vw" fetchpriority="high">
   <title>Tiba Tennessee | Luxury Wellness Resort Investment</title>
   <meta name="description" content="Invest in Tiba Tennessee—a nature-led, ritual-focused landscape hotel in the Appalachian Highlands.">
+  <!-- Favicons -->
+  <link rel="icon" href="images/favicon.ico" sizes="32x32">
+  <link rel="icon" href="images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="images/favicon-16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#222323">
+  <!-- Open Graph / Social -->
   <meta property="og:title" content="Tiba Tennessee | Luxury Wellness Resort Investment">
   <meta property="og:description" content="A nature-led, ritual-focused landscape hotel in the Appalachian Highlands.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tiba Tennessee | Luxury Wellness Resort Investment">
+  <meta name="twitter:description" content="A nature-led, ritual-focused landscape hotel in the Appalachian Highlands.">
+  <meta name="twitter:image" content="images/og-image.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -51,7 +69,12 @@
       line-height: 1.6;
     }
 
-    img { max-width: 100%; height: auto; display: block; }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      content-visibility: auto;
+    }
     a { text-decoration: none; color: inherit; }
     button { border: none; background: none; cursor: pointer; font-family: inherit; }
 
@@ -243,6 +266,7 @@
       opacity: 0.7;
       z-index: 1;
       transition: opacity 0.8s ease;
+      content-visibility: visible;
     }
     .hero__poster.fade-out {
       opacity: 0;
@@ -507,16 +531,16 @@
     .concept__img-1 {
       position: absolute;
       top: 0; left: 0;
-      width: 72%;
-      height: 70%;
+      width: 58%;
+      height: 52%;
       object-fit: cover;
       border-radius: 2px;
     }
     .concept__img-2 {
       position: absolute;
       bottom: 0; right: 0;
-      width: 58%;
-      height: 52%;
+      width: 72%;
+      height: 70%;
       object-fit: cover;
       border-radius: 2px;
       border: 3px solid var(--stone);
@@ -528,6 +552,7 @@
     .showcase {
       background: var(--offwhite);
       padding: clamp(80px, 10vw, 160px) 0;
+      overflow: hidden;
     }
     .section-header {
       margin-bottom: clamp(48px, 5vw, 72px);
@@ -561,49 +586,168 @@
     }
     .section-title.light { color: var(--ivory); }
 
-    .showcase__grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+    /* Interactive accordion panels */
+    .showcase__accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid rgba(34, 35, 35, 0.1);
     }
-    .showcase__card {
-      background: var(--white);
+
+    .showcase__panel {
+      border-bottom: 1px solid rgba(34, 35, 35, 0.1);
+      overflow: hidden;
+    }
+
+    .showcase__panel-header {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: clamp(20px, 3vw, 40px);
+      padding: clamp(28px, 3.5vw, 44px) 0;
+      cursor: pointer;
+      transition: opacity 0.3s;
+      user-select: none;
+    }
+    .showcase__panel-header:hover {
+      opacity: 0.75;
+    }
+
+    .showcase__panel-num {
+      font-family: var(--font-serif);
+      font-size: clamp(0.85rem, 1vw, 1rem);
+      color: var(--river-green);
+      opacity: 0.7;
+      min-width: 28px;
+    }
+
+    .showcase__panel-title-row {
+      display: flex;
+      align-items: baseline;
+      gap: clamp(16px, 2vw, 32px);
+      flex-wrap: wrap;
+    }
+
+    .showcase__panel-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+      font-weight: 400;
+      color: var(--stone);
+      line-height: 1.2;
+    }
+
+    .showcase__panel-tagline {
+      font-size: clamp(0.82rem, 0.95vw, 0.92rem);
+      font-weight: 300;
+      color: var(--stone);
+      opacity: 0.4;
+      white-space: nowrap;
+    }
+
+    .showcase__panel-toggle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(34, 35, 35, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.5s var(--ease-out), background 0.3s, border-color 0.3s;
+      flex-shrink: 0;
+    }
+    .showcase__panel.active .showcase__panel-toggle {
+      transform: rotate(45deg);
+      background: var(--stone);
+      border-color: var(--stone);
+    }
+    .showcase__panel.active .showcase__panel-toggle svg {
+      color: var(--ivory);
+    }
+    .showcase__panel-toggle svg {
+      width: 18px;
+      height: 18px;
+      color: var(--stone);
+      transition: color 0.3s;
+    }
+
+    .showcase__panel-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.7s var(--ease-out), opacity 0.5s var(--ease-out);
+      opacity: 0;
+    }
+    .showcase__panel.active .showcase__panel-body {
+      opacity: 1;
+    }
+
+    .showcase__panel-content {
+      padding-bottom: clamp(40px, 5vw, 72px);
+    }
+
+    /* Hero image row */
+    .showcase__panel-images {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 8px;
+      margin-bottom: clamp(32px, 4vw, 48px);
       border-radius: 3px;
       overflow: hidden;
-      transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
     }
-    .showcase__card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 24px 64px rgba(34, 35, 35, 0.1);
-    }
-    .showcase__card-img {
+    .showcase__panel-img {
       width: 100%;
-      height: 280px;
+      height: clamp(240px, 30vw, 400px);
       object-fit: cover;
-      transition: transform 0.6s var(--ease-out);
+      display: block;
     }
-    .showcase__card:hover .showcase__card-img {
-      transform: scale(1.03);
+
+    /* Detail grid below images */
+    .showcase__panel-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 4vw, 56px);
+      align-items: start;
     }
-    .showcase__card-img-wrap {
-      overflow: hidden;
-    }
-    .showcase__card-body {
-      padding: 28px 28px 32px;
-    }
-    .showcase__card-title {
-      font-family: var(--font-serif);
-      font-size: 1.3rem;
-      font-weight: 400;
-      margin-bottom: 12px;
-      color: var(--stone);
-    }
-    .showcase__card-desc {
-      font-size: 0.9rem;
+
+    .showcase__panel-desc {
+      font-size: clamp(0.95rem, 1.1vw, 1.08rem);
       font-weight: 300;
-      line-height: 1.7;
+      line-height: 1.85;
       color: var(--stone);
-      opacity: 0.65;
+      opacity: 0.6;
+      max-width: 520px;
+    }
+
+    .showcase__panel-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .showcase__panel-highlight {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .showcase__panel-highlight-icon {
+      width: 20px;
+      height: 20px;
+      color: var(--river-green);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .showcase__panel-highlight-text {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: var(--stone);
+      line-height: 1.6;
+      opacity: 0.7;
+    }
+    .showcase__panel-highlight-text strong {
+      font-weight: 600;
+      opacity: 1;
+      color: var(--stone);
     }
 
     /* ========================================
@@ -714,6 +858,127 @@
       margin-left: 3px;
     }
     .video-pitch__play.hidden { display: none; }
+
+    /* ========================================
+       GALLERY SECTION
+    ======================================== */
+    .gallery {
+      background: var(--stone);
+      padding: clamp(80px, 10vw, 140px) 0;
+      overflow: hidden;
+    }
+    .gallery__scroll {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 8px;
+      scrollbar-width: none;
+      cursor: grab;
+    }
+    .gallery__scroll:active { cursor: grabbing; }
+    .gallery__scroll::-webkit-scrollbar { display: none; }
+    .gallery__item {
+      flex: 0 0 auto;
+      width: clamp(320px, 42vw, 560px);
+      aspect-ratio: 3 / 2;
+      overflow: hidden;
+      border-radius: 3px;
+      scroll-snap-align: start;
+      cursor: pointer;
+    }
+    .gallery__item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      aspect-ratio: 16/9;
+      transition: transform 0.8s var(--ease-out);
+    }
+    .gallery__item:hover img {
+      transform: scale(1.04);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(34, 35, 35, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s var(--ease-out);
+    }
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .lightbox__img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 4px;
+      transform: scale(0.92);
+      transition: transform 0.4s var(--ease-out);
+    }
+    .lightbox.active .lightbox__img {
+      transform: scale(1);
+    }
+    .lightbox__close {
+      position: absolute;
+      top: clamp(20px, 3vw, 40px);
+      right: clamp(20px, 3vw, 40px);
+      width: 48px; height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ivory);
+      cursor: pointer;
+      border-radius: 50%;
+      background: rgba(240, 238, 220, 0.08);
+      border: 1px solid rgba(240, 238, 220, 0.12);
+      transition: background 0.3s;
+    }
+    .lightbox__close:hover {
+      background: rgba(240, 238, 220, 0.15);
+    }
+    .lightbox__close svg {
+      width: 20px; height: 20px;
+    }
+    .lightbox__nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px; height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ivory);
+      cursor: pointer;
+      border-radius: 50%;
+      background: rgba(240, 238, 220, 0.08);
+      border: 1px solid rgba(240, 238, 220, 0.12);
+      transition: background 0.3s;
+    }
+    .lightbox__nav:hover {
+      background: rgba(240, 238, 220, 0.15);
+    }
+    .lightbox__nav svg { width: 20px; height: 20px; }
+    .lightbox__nav--prev { left: clamp(16px, 3vw, 40px); }
+    .lightbox__nav--next { right: clamp(16px, 3vw, 40px); }
+
+    @media (max-width: 768px) {
+      .gallery__item {
+        width: 80vw;
+      }
+      .lightbox__nav { display: none; }
+    }
 
     /* ========================================
        LOCATION SECTION
@@ -986,12 +1251,12 @@
        RESPONSIVE
     ======================================== */
     @media (max-width: 1024px) {
-      .showcase__grid { grid-template-columns: 1fr; max-width: 560px; }
+      .showcase__panel-details { grid-template-columns: 1fr; gap: 28px; }
+      .showcase__panel-images { grid-template-columns: 1fr 1fr; }
       .opportunity__grid { grid-template-columns: 1fr; max-width: 560px; }
       .concept__inner { grid-template-columns: 1fr; }
       .concept__images { height: 400px; }
       .location__inner { grid-template-columns: 1fr; }
-
     }
 
     @media (max-width: 768px) {
@@ -1021,15 +1286,151 @@
       .footer__bottom-inner { flex-direction: column; align-items: center; text-align: center; }
       .footer__links { flex-direction: column; gap: 32px; align-items: center; }
 
-      .showcase__card-img { height: 220px; }
+      .showcase__panel-images { grid-template-columns: 1fr; }
+      .showcase__panel-img { height: 220px; }
+      .showcase__panel-tagline { display: none; }
+      .showcase__panel-header { grid-template-columns: 1fr auto; gap: 16px; }
+      .showcase__panel-num { display: none; }
     }
 
     @media (max-width: 480px) {
       .hero__press-logos { gap: 16px; }
       .hero__press-logos span { font-size: 0.82rem; }
       .concept__images { height: 320px; }
-      .concept__img-1 { width: 85%; height: 60%; }
-      .concept__img-2 { width: 65%; height: 48%; }
+      .concept__img-1 { width: 65%; height: 48%; }
+      .concept__img-2 { width: 85%; height: 60%; }
+      .showcase__panel-img { height: 180px; }
+    }
+
+    /* ---- About CTA Section ---- */
+    .about-cta {
+      padding: clamp(80px, 10vw, 140px) 0;
+      background: var(--offwhite);
+    }
+    .about-cta__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 5vw, 80px);
+      align-items: center;
+    }
+    .about-cta__text {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .about-cta__title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 400;
+      color: var(--stone);
+      line-height: 1.2;
+    }
+    .about-cta__desc {
+      font-family: var(--font-sans);
+      font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+      color: var(--stone);
+      opacity: 0.75;
+      line-height: 1.7;
+    }
+    .about-cta__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--river-green);
+      text-decoration: none;
+      margin-top: 8px;
+      transition: gap 0.3s var(--ease-out), color 0.3s;
+    }
+    .about-cta__link:hover {
+      gap: 16px;
+      color: var(--stone);
+    }
+    .about-cta__card {
+      display: flex;
+      justify-content: center;
+    }
+    .about-cta__card-inner {
+      background: url('bg.png') center / cover no-repeat;
+      border-radius: 6px;
+      padding: clamp(36px, 4vw, 56px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-cta__card-inner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(34, 35, 35, 0.55);
+      border-radius: 6px;
+    }
+    .about-cta__card-inner > * {
+      position: relative;
+      z-index: 1;
+    }
+    .about-cta__logo {
+      width: 80px;
+      height: auto;
+      opacity: 0.9;
+      filter: brightness(0) invert(1);
+    }
+    .about-cta__pillars {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+    .about-cta__pillars span {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      opacity: 0.6;
+      background: rgba(240, 238, 220, 0.08);
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 1px solid rgba(240, 238, 220, 0.1);
+    }
+    .about-cta__btn {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--stone);
+      background: var(--river-green);
+      padding: 14px 32px;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.3s var(--ease-out);
+    }
+    .about-cta__btn:hover {
+      background: var(--river-green-hover);
+      transform: translateY(-1px);
+    }
+    @media (max-width: 768px) {
+      .about-cta__inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .about-cta__link {
+        justify-content: center;
+      }
+      .about-cta__card-inner {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
@@ -1039,11 +1440,12 @@
   <nav class="navbar" id="navbar">
     <div class="container">
       <a href="#" class="navbar__logo">
-        <img src="TIBA_FINAL_LOGO_LANDSCAPE (3) (13).png" alt="Tiba Living">
+        <img src="images/logo-landscape.png" alt="Tiba Living" width="400" height="92">
       </a>
       <ul class="navbar__links">
         <li><a href="#concept">Vision</a></li>
         <li><a href="#showcase">The Asset</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#location">Location</a></li>
       </ul>
       <a href="#footer" class="btn-cta desktop-only">
@@ -1060,6 +1462,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <a href="#concept" onclick="closeMobile()">Vision</a>
     <a href="#showcase" onclick="closeMobile()">The Asset</a>
+    <a href="#gallery" onclick="closeMobile()">Gallery</a>
     <a href="#location" onclick="closeMobile()">Location</a>
     <a href="#footer" class="btn-cta" onclick="closeMobile()">Request Deck</a>
   </div>
@@ -1068,7 +1471,13 @@
 
     <!-- ============ HERO ============ -->
     <section class="hero" id="hero">
-      <img class="hero__poster" id="heroPoster" src="Renders/LOBBY _ SUITES 2 (3).jpg" alt="">
+      <img class="hero__poster" id="heroPoster"
+        src="images/hero-poster-1920.jpg"
+        srcset="images/hero-poster-800.jpg 800w, images/hero-poster-1200.jpg 1200w, images/hero-poster-1920.jpg 1920w"
+        sizes="100vw"
+        width="1920" height="1080"
+        alt="Aerial view of Tiba Tennessee resort at dusk"
+        fetchpriority="high">
       <iframe class="hero__video" id="heroVimeoIframe"
         src="https://player.vimeo.com/video/1165886210?background=1&autoplay=1&loop=1&muted=1&badge=0&autopause=0&player_id=heroVimeoIframe&app_id=58479"
         allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
@@ -1096,7 +1505,7 @@
             <div class="hero__press-logos">
               <span>FORBES</span>
               <span class="press-divider">&nbsp;</span>
-              <span>MSN</span>
+              <a href="https://www.msn.com/en-us/travel/spas/how-nature-led-ritual-focused-hotels-are-redefining-wellness-travel-in-the-us/ar-AA1WnhXC" target="_blank" rel="noopener" style="font-family: var(--font-serif); font-size: 0.95rem; font-weight: 700; color: var(--ivory); opacity: 0.7; letter-spacing: 0.04em; transition: opacity 0.3s;">MSN</a>
               <span class="press-divider">&nbsp;</span>
               <span>AP NEWS</span>
             </div>
@@ -1112,12 +1521,12 @@
           <div class="container">
             <div class="hero__metrics-grid">
               <div class="hero__metrics-item">
-                <div class="hero__metrics-number" data-target="57">0</div>
-                <div class="hero__metrics-label">Acres of Private Nature</div>
-              </div>
-              <div class="hero__metrics-item">
                 <div class="hero__metrics-number" data-target="45">0</div>
                 <div class="hero__metrics-label">Lakeside Suites</div>
+              </div>
+              <div class="hero__metrics-item">
+                <div class="hero__metrics-number" data-target="34.3" data-suffix="%" data-decimal="1">0</div>
+                <div class="hero__metrics-label">NOI</div>
               </div>
               <div class="hero__metrics-item">
                 <div class="hero__metrics-number" data-target="30.6" data-suffix="%" data-decimal="1">0</div>
@@ -1143,8 +1552,18 @@
             <p class="concept__copy reveal reveal-delay-2">A destination where silence is the main amenity. We create a playground with intention, discovering equilibrium between venue and nature. A return to yourself—through the land, through ritual, through stillness.</p>
           </div>
           <div class="concept__images reveal reveal-delay-2">
-            <img class="concept__img-1" src="Renders/LOBBY _ SUITES 2 (3).jpg" alt="Aerial view of the infinity lake pool and lakeside suites" loading="lazy">
-            <img class="concept__img-2" src="Renders/038 (3) (4).jpg" alt="Luxury suite interior with natural materials" loading="lazy">
+            <img class="concept__img-1"
+              src="images/concept-1-960.jpg"
+              srcset="images/concept-1-600.jpg 600w, images/concept-1-960.jpg 960w"
+              sizes="(max-width: 1024px) 85vw, 36vw"
+              width="960" height="540"
+              alt="Luxury suite interior with natural materials" loading="lazy">
+            <img class="concept__img-2"
+              src="images/concept-2-800.jpg"
+              srcset="images/concept-2-500.jpg 500w, images/concept-2-800.jpg 800w"
+              sizes="(max-width: 1024px) 65vw, 29vw"
+              width="800" height="450"
+              alt="Aerial view of the infinity lake pool and lakeside suites" loading="lazy">
           </div>
         </div>
       </div>
@@ -1157,34 +1576,137 @@
           <div class="section-badge reveal">The Asset</div>
           <h2 class="section-title reveal reveal-delay-1">A Landscape Hotel,<br>Designed for the Elements</h2>
         </div>
-        <div class="showcase__grid">
-          <div class="showcase__card reveal">
-            <div class="showcase__card-img-wrap">
-              <img class="showcase__card-img" src="Renders/LAKESIDE SUITE.jpg" alt="Lakeside Suite exterior on the water" loading="lazy">
+        <div class="showcase__accordion reveal reveal-delay-2">
+
+          <!-- Lakeside Suites -->
+          <div class="showcase__panel" data-panel="suites">
+            <div class="showcase__panel-header">
+              <span class="showcase__panel-num">01</span>
+              <div class="showcase__panel-title-row">
+                <h3 class="showcase__panel-title">Lakeside Suites</h3>
+                <span class="showcase__panel-tagline">24 keys, lake views, in-room rituals</span>
+              </div>
+              <div class="showcase__panel-toggle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </div>
             </div>
-            <div class="showcase__card-body">
-              <h3 class="showcase__card-title">Lakeside Suites</h3>
-              <p class="showcase__card-desc">Waterfront luxury featuring private decks, jacuzzis, and an elemental build designed to immerse guests in the land.</p>
+            <div class="showcase__panel-body">
+              <div class="showcase__panel-content">
+                <div class="showcase__panel-images">
+                  <img class="showcase__panel-img" src="suite1.jpg" alt="Lakeside suite deck overlooking the lake with fire pit" loading="lazy">
+                  <img class="showcase__panel-img" src="suite 2.jpg" alt="Suite interior with natural materials and fireplace" loading="lazy">
+                </div>
+                <div class="showcase__panel-details">
+                  <p class="showcase__panel-desc">A 24-key retreat shaped from the land: a lake revealed from a spring, with suites individually oriented to the water — some at the bank, others elevated for horizon-line views. Architecture grown from the site, not placed on it. Balinese craft meets Tennessee forest — teak, stone, and native geology forming spaces where indoor-outdoor living is not a feature, but the foundation.</p>
+                  <div class="showcase__panel-highlights">
+                    <div class="showcase__panel-highlight">
+                      <svg class="showcase__panel-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                      <span class="showcase__panel-highlight-text"><strong>Private decks &amp; jacuzzis</strong> — each suite opens directly onto the water's edge</span>
+                    </div>
+                    <div class="showcase__panel-highlight">
+                      <svg class="showcase__panel-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                      <span class="showcase__panel-highlight-text"><strong>In-room rituals</strong> — curated wellness experiences woven into every stay</span>
+                    </div>
+                    <div class="showcase__panel-highlight">
+                      <svg class="showcase__panel-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                      <span class="showcase__panel-highlight-text"><strong>ADR uplift</strong> — premium positioning with upsell packages driving revenue per key</span>
+                    </div>
+                    <div class="showcase__panel-highlight">
+                      <svg class="showcase__panel-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                      <span class="showcase__panel-highlight-text"><strong>Comp set: $595–$2,100+/night</strong> — positioned alongside Blackberry Mountain &amp; Boltfarm</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="showcase__card reveal reveal-delay-1">
-            <div class="showcase__card-img-wrap">
-              <img class="showcase__card-img" src="Renders/LOBBY _ SUITES 1.jpg. (4).jpg" alt="The Lobby with fire-cooking kitchen and gathering spaces" loading="lazy">
+
+          <!-- The Lobby -->
+          <div class="showcase__panel" data-panel="lobby">
+            <div class="showcase__panel-header">
+              <span class="showcase__panel-num">02</span>
+              <div class="showcase__panel-title-row">
+                <h3 class="showcase__panel-title">The Lobby</h3>
+                <span class="showcase__panel-tagline">Fire-cooking, ritual dining, gathering</span>
+              </div>
+              <div class="showcase__panel-toggle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </div>
             </div>
-            <div class="showcase__card-body">
-              <h3 class="showcase__card-title">The Lobby</h3>
-              <p class="showcase__card-desc">The heart of the retreat featuring fire-cooking kitchens, wine bars, and gathering spaces designed for connection.</p>
+            <div class="showcase__panel-body">
+              <div class="showcase__panel-content">
+                <div class="showcase__panel-images">
+                  <img class="showcase__panel-img" src="resto1.jpg" alt="Fire-cooking kitchen with open flame and artisan ingredients" loading="lazy">
+                  <img class="showcase__panel-img" src="resto2.JPG" alt="Chef grilling over open flame with billowing smoke" loading="lazy">
+                </div>
+                <div class="showcase__panel-details">
+                  <p class="showcase__panel-desc">The heart of the retreat — where ritual meets craft, and every meal becomes ceremony. Nourishing, ritual-led dining featuring lakeside breakfasts, fireside dinners, chef events, and curated picnics. Culinary programming by Tavolo Group, the creative force behind iconic Bali venues, bringing a sharp focus on guest experience and operational excellence to Tennessee.</p>
+                  <div class="showcase__panel-highlights">
+                    <div class="showcase__panel-highlight">
+                      <svg class="showcase__panel-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 110 8h-1"/><path d="M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                      <span class="showcase__panel-highlight-text"><strong>Restaurant, bar &amp; private dining</strong> — multiple F&amp;B revenue streams from a single operation</span>
+                    </div>
+                    <div class="showcase__panel-highlight">
+                      <svg class="showcase__panel-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                      <span class="showcase__panel-highlight-text"><strong>Tastings &amp; curated picnics</strong> — high-margin experiential upsells</span>
+                    </div>
+                    <div class="showcase__panel-highlight">
+                      <svg class="showcase__panel-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                      <span class="showcase__panel-highlight-text"><strong>Full-property buyouts</strong> — ideal scale for boutique gatherings and high-yield groups</span>
+                    </div>
+                    <div class="showcase__panel-highlight">
+                      <svg class="showcase__panel-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                      <span class="showcase__panel-highlight-text"><strong>Event F&amp;B</strong> — retreat partnerships and private event catering as diversified revenue</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="showcase__card reveal reveal-delay-2">
-            <div class="showcase__card-img-wrap">
-              <img class="showcase__card-img" src="Renders/Lakeside Suite Interior (2).jpg" alt="Wellness and nature experience" loading="lazy">
+
+          <!-- Nature & Wellness -->
+          <div class="showcase__panel" data-panel="wellness">
+            <div class="showcase__panel-header">
+              <span class="showcase__panel-num">03</span>
+              <div class="showcase__panel-title-row">
+                <h3 class="showcase__panel-title">Nature &amp; Wellness</h3>
+                <span class="showcase__panel-tagline">Sound healing, contrast therapy, trails</span>
+              </div>
+              <div class="showcase__panel-toggle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </div>
             </div>
-            <div class="showcase__card-body">
-              <h3 class="showcase__card-title">Nature &amp; Wellness</h3>
-              <p class="showcase__card-desc">Not just a spa, but a connection to the land. Ice-baths, sound healing, and nature trails that allow the elements to restore you.</p>
+            <div class="showcase__panel-body">
+              <div class="showcase__panel-content">
+                <div class="showcase__panel-images">
+                  <img class="showcase__panel-img" src="wellness1.JPG" alt="Misty Appalachian lake surrounded by autumn foliage" loading="lazy">
+                  <img class="showcase__panel-img" src="wellness2.jpeg" alt="Wellness meditation in a sunlit forest clearing" loading="lazy" style="object-position: center 85%;">
+                </div>
+                <div class="showcase__panel-details">
+                  <p class="showcase__panel-desc">Not just a spa, but a connection to the land. Wellness as architecture, not amenity. Ritual and stillness shape the stay — where "silence is the main amenity." Walking distance from Foster Falls, guests gain effortless access to a 60-foot waterfall, canyon overlooks, and miles of protected hiking trails — an amenity no hotel can build, but one that defines the Tiba experience.</p>
+                  <div class="showcase__panel-highlights">
+                    <div class="showcase__panel-highlight">
+                      <svg class="showcase__panel-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+                      <span class="showcase__panel-highlight-text"><strong>Sound healing &amp; meditation</strong> — therapeutic programming in nature-integrated spaces</span>
+                    </div>
+                    <div class="showcase__panel-highlight">
+                      <svg class="showcase__panel-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+                      <span class="showcase__panel-highlight-text"><strong>Ice-baths &amp; contrast therapy</strong> — high-demand wellness offerings with premium pricing</span>
+                    </div>
+                    <div class="showcase__panel-highlight">
+                      <svg class="showcase__panel-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                      <span class="showcase__panel-highlight-text"><strong>Foster Falls access</strong> — 60-ft waterfall, canyon overlooks, and protected trails at your doorstep</span>
+                    </div>
+                    <div class="showcase__panel-highlight">
+                      <svg class="showcase__panel-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                      <span class="showcase__panel-highlight-text"><strong>Corporate wellness &amp; retreats</strong> — paid classes, private bookings, and group packages</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -1238,12 +1760,66 @@
         </div>
         <div class="video-pitch__inner">
           <div class="video-pitch__wrap reveal reveal-delay-2" id="pitchWrap">
-            <img class="video-pitch__poster" src="Renders/Lakeside Suite Facade (2).png" alt="Video pitch preview">
+            <img class="video-pitch__poster"
+              src="images/pitch-poster-1000.jpg"
+              srcset="images/pitch-poster-600.jpg 600w, images/pitch-poster-1000.jpg 1000w"
+              sizes="(max-width: 768px) 90vw, min(1000px, 75vw)"
+              width="1000" height="562"
+              alt="Video pitch preview" loading="lazy">
             <div class="video-pitch__play" id="pitchPlay">
               <div class="video-pitch__play-btn">
                 <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="8,5 20,12 8,19"/></svg>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GALLERY ============ -->
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="section-header" style="text-align: center;">
+          <div class="section-badge light reveal" style="margin: 0 auto 16px;">The Property</div>
+          <h2 class="section-title light reveal reveal-delay-1">A Place Shaped<br>by the Land</h2>
+        </div>
+      </div>
+      <div class="container">
+        <div class="gallery__scroll reveal reveal-delay-2" id="galleryScroll">
+          <div class="gallery__item" data-index="0">
+            <img src="images/gallery-1-1120.jpg"
+              srcset="images/gallery-1-640.jpg 640w, images/gallery-1-1120.jpg 1120w"
+              sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
+              width="1120" height="630"
+              alt="Aerial view of infinity pool and lakeside suites at dusk" loading="lazy">
+          </div>
+          <div class="gallery__item" data-index="1">
+            <img src="images/gallery-2-1120.jpg"
+              srcset="images/gallery-2-640.jpg 640w, images/gallery-2-1120.jpg 1120w"
+              sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
+              width="1120" height="630"
+              alt="Lakeside suite facade with natural stone and timber" loading="lazy">
+          </div>
+          <div class="gallery__item" data-index="2">
+            <img src="images/gallery-3-1120.jpg"
+              srcset="images/gallery-3-640.jpg 640w, images/gallery-3-1120.jpg 1120w"
+              sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
+              width="1120" height="630"
+              alt="Suite interior with warm natural materials" loading="lazy">
+          </div>
+          <div class="gallery__item" data-index="3">
+            <img src="images/gallery-4-1120.jpg"
+              srcset="images/gallery-4-640.jpg 640w, images/gallery-4-1120.jpg 1120w"
+              sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
+              width="1120" height="630"
+              alt="Lakeside suite on the water's edge" loading="lazy">
+          </div>
+          <div class="gallery__item" data-index="4">
+            <img src="images/gallery-5-1120.jpg"
+              srcset="images/gallery-5-640.jpg 640w, images/gallery-5-1120.jpg 1120w"
+              sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
+              width="1120" height="630"
+              alt="The lobby and gathering spaces" loading="lazy">
           </div>
         </div>
       </div>
@@ -1259,7 +1835,11 @@
             <p class="location__copy reveal reveal-delay-2">Tennessee, USA. A destination to arrive, and feel whole. Nestled within 57 acres of private Appalachian wilderness, where stillness meets the water's edge.</p>
           </div>
           <div class="location__map reveal reveal-delay-2">
-            <img src="694130dacf3e3eec45667c0f_Untitled design (1)-p-2600.jpg" alt="Aerial site map of Tiba Tennessee property" loading="lazy">
+            <img src="images/location-map-1300.jpg"
+              srcset="images/location-map-800.jpg 800w, images/location-map-1300.jpg 1300w"
+              sizes="(max-width: 1024px) 90vw, 45vw"
+              width="1300" height="731"
+              alt="Aerial site map of Tiba Tennessee property" loading="lazy">
           </div>
         </div>
       </div>
@@ -1326,11 +1906,39 @@
         </form>
       </div>
     </div>
+    <!-- ============ ABOUT TIBA LIVING ============ -->
+    <div class="about-cta" id="about-tiba">
+      <div class="container">
+        <div class="about-cta__inner reveal">
+          <div class="about-cta__text">
+            <div class="section-badge">The Company</div>
+            <h2 class="about-cta__title">The Journey to Tiba</h2>
+            <p class="about-cta__desc">A boutique development company distinguished by its authentic approach to design, development, and delivery — curating spaces with informed details from functionality to design, where every space is an investment in luxury and sustainability.</p>
+            <a href="https://tibaliving.com/about-us/" target="_blank" rel="noopener" class="about-cta__link">
+              Learn More About Tiba Living
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+          <div class="about-cta__card">
+            <div class="about-cta__card-inner">
+              <img src="images/logo-portrait.png" alt="Tiba Living" class="about-cta__logo" loading="lazy">
+              <div class="about-cta__pillars">
+                <span>Natural Assimilation</span>
+                <span>Sustainable Development</span>
+                <span>Timeless Design</span>
+                <span>Informed Modernity</span>
+              </div>
+              <a href="https://tibaliving.com/about-us/" target="_blank" rel="noopener" class="about-cta__btn">Visit tibaliving.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="footer__bottom">
       <div class="container">
         <div class="footer__bottom-inner">
           <div class="footer__logo">
-            <img src="TIBA_FINAL_LOGO_PORTRAIT (2).png" alt="Tiba Living">
+            <img src="images/logo-portrait.png" alt="Tiba Living" width="159" height="240">
           </div>
           <div class="footer__links">
             <div class="footer__link-group">
@@ -1354,6 +1962,20 @@
       </div>
     </div>
   </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" id="lightboxClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <img class="lightbox__img" id="lightboxImg" src="" alt="">
+    <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+    </button>
+  </div>
 
   <!-- ============ JAVASCRIPT ============ -->
   <script src="https://player.vimeo.com/api/player.js"></script>
@@ -1394,6 +2016,27 @@
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ---- Showcase accordion ----
+    document.querySelectorAll('.showcase__panel-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const panel = header.closest('.showcase__panel');
+        const body = panel.querySelector('.showcase__panel-body');
+        const isActive = panel.classList.contains('active');
+
+        // Close all panels
+        document.querySelectorAll('.showcase__panel').forEach(p => {
+          p.classList.remove('active');
+          p.querySelector('.showcase__panel-body').style.maxHeight = '0';
+        });
+
+        // Open clicked panel if it wasn't already open
+        if (!isActive) {
+          panel.classList.add('active');
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      });
+    });
 
     // ---- Number count-up ----
     const countObserver = new IntersectionObserver((entries) => {
@@ -1536,6 +2179,76 @@
       form.reset();
       return false;
     }
+
+    // ---- Gallery: drag-to-scroll ----
+    const galleryScroll = document.getElementById('galleryScroll');
+    let hasDragged = false;
+    if (galleryScroll) {
+      let isDown = false, startX, scrollLeft;
+      galleryScroll.addEventListener('mousedown', (e) => {
+        isDown = true; hasDragged = false;
+        startX = e.pageX - galleryScroll.offsetLeft;
+        scrollLeft = galleryScroll.scrollLeft;
+      });
+      galleryScroll.addEventListener('mouseleave', () => { isDown = false; });
+      galleryScroll.addEventListener('mouseup', () => { isDown = false; });
+      galleryScroll.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - galleryScroll.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        if (Math.abs(walk) > 5) hasDragged = true;
+        galleryScroll.scrollLeft = scrollLeft - walk;
+      });
+    }
+
+    // ---- Lightbox ----
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const gallerySrcs = Array.from(document.querySelectorAll('.gallery__item img')).map(img => img.src);
+    let currentLightbox = 0;
+
+    document.querySelectorAll('.gallery__item').forEach((item) => {
+      item.addEventListener('click', () => {
+        if (galleryScroll && galleryScroll.contains(item) && hasDragged) return;
+        const idx = parseInt(item.dataset.index);
+        currentLightbox = idx;
+        lightboxImg.src = gallerySrcs[idx];
+        lightboxImg.alt = item.querySelector('img').alt;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigateLightbox(-1);
+      if (e.key === 'ArrowRight') navigateLightbox(1);
+    });
+
+    function navigateLightbox(dir) {
+      currentLightbox = (currentLightbox + dir + gallerySrcs.length) % gallerySrcs.length;
+      lightboxImg.src = gallerySrcs[currentLightbox];
+    }
+
+    document.getElementById('lightboxPrev').addEventListener('click', (e) => {
+      e.stopPropagation();
+      navigateLightbox(-1);
+    });
+    document.getElementById('lightboxNext').addEventListener('click', (e) => {
+      e.stopPropagation();
+      navigateLightbox(1);
+    });
   </script>
 
 </body>
