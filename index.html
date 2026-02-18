@@ -3,9 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://player.vimeo.com">
-  <link rel="preconnect" href="https://i.vimeocdn.com">
-  <link rel="preconnect" href="https://f.vimeocdn.com">
   <link rel="preload" as="image" href="images/hero-poster-1920.jpg"
     imagesrcset="images/hero-poster-800.jpg 800w, images/hero-poster-1200.jpg 1200w, images/hero-poster-1920.jpg 1920w"
     imagesizes="100vw" fetchpriority="high">
@@ -31,7 +28,9 @@
   <meta name="twitter:image" content="images/og-image.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
   <style>
     /* ========================================
        CSS CUSTOM PROPERTIES
@@ -1355,7 +1354,7 @@
       justify-content: center;
     }
     .about-cta__card-inner {
-      background: url('bg.png') center / cover no-repeat;
+      background: url('images/bg-400.jpg') center / cover no-repeat;
       border-radius: 6px;
       padding: clamp(36px, 4vw, 56px);
       display: flex;
@@ -1440,7 +1439,7 @@
   <nav class="navbar" id="navbar">
     <div class="container">
       <a href="#" class="navbar__logo">
-        <img src="images/logo-landscape.png" alt="Tiba Living" width="400" height="92">
+        <img src="images/logo-landscape.png" alt="Tiba Living" width="400" height="92" decoding="async">
       </a>
       <ul class="navbar__links">
         <li><a href="#concept">Vision</a></li>
@@ -1479,7 +1478,7 @@
         alt="Aerial view of Tiba Tennessee resort at dusk"
         fetchpriority="high">
       <iframe class="hero__video" id="heroVimeoIframe"
-        src="https://player.vimeo.com/video/1165886210?background=1&autoplay=1&loop=1&muted=1&badge=0&autopause=0&player_id=heroVimeoIframe&app_id=58479"
+        data-src="https://player.vimeo.com/video/1165886210?background=1&autoplay=1&loop=1&muted=1&badge=0&autopause=0&player_id=heroVimeoIframe&app_id=58479"
         allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
         referrerpolicy="strict-origin-when-cross-origin"
         title="Hero video"></iframe>
@@ -1557,13 +1556,13 @@
               srcset="images/concept-1-600.jpg 600w, images/concept-1-960.jpg 960w"
               sizes="(max-width: 1024px) 85vw, 36vw"
               width="960" height="540"
-              alt="Luxury suite interior with natural materials" loading="lazy">
+              alt="Luxury suite interior with natural materials" loading="lazy" decoding="async">
             <img class="concept__img-2"
               src="images/concept-2-800.jpg"
               srcset="images/concept-2-500.jpg 500w, images/concept-2-800.jpg 800w"
               sizes="(max-width: 1024px) 65vw, 29vw"
               width="800" height="450"
-              alt="Aerial view of the infinity lake pool and lakeside suites" loading="lazy">
+              alt="Aerial view of the infinity lake pool and lakeside suites" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -1593,8 +1592,18 @@
             <div class="showcase__panel-body">
               <div class="showcase__panel-content">
                 <div class="showcase__panel-images">
-                  <img class="showcase__panel-img" src="suite1.jpg" alt="Lakeside suite deck overlooking the lake with fire pit" loading="lazy">
-                  <img class="showcase__panel-img" src="suite 2.jpg" alt="Suite interior with natural materials and fireplace" loading="lazy">
+                  <img class="showcase__panel-img"
+                    src="images/suite1-880.jpg"
+                    srcset="images/suite1-560.jpg 560w, images/suite1-880.jpg 880w"
+                    sizes="(max-width: 768px) 90vw, 50vw"
+                    width="880" height="495"
+                    alt="Lakeside suite deck overlooking the lake with fire pit" loading="lazy">
+                  <img class="showcase__panel-img"
+                    src="images/suite2-880.jpg"
+                    srcset="images/suite2-560.jpg 560w, images/suite2-880.jpg 880w"
+                    sizes="(max-width: 768px) 90vw, 50vw"
+                    width="880" height="495"
+                    alt="Suite interior with natural materials and fireplace" loading="lazy">
                 </div>
                 <div class="showcase__panel-details">
                   <p class="showcase__panel-desc">A 24-key retreat shaped from the land: a lake revealed from a spring, with suites individually oriented to the water — some at the bank, others elevated for horizon-line views. Architecture grown from the site, not placed on it. Balinese craft meets Tennessee forest — teak, stone, and native geology forming spaces where indoor-outdoor living is not a feature, but the foundation.</p>
@@ -1636,8 +1645,18 @@
             <div class="showcase__panel-body">
               <div class="showcase__panel-content">
                 <div class="showcase__panel-images">
-                  <img class="showcase__panel-img" src="resto1.jpg" alt="Fire-cooking kitchen with open flame and artisan ingredients" loading="lazy">
-                  <img class="showcase__panel-img" src="resto2.JPG" alt="Chef grilling over open flame with billowing smoke" loading="lazy">
+                  <img class="showcase__panel-img"
+                    src="images/resto1-880.jpg"
+                    srcset="images/resto1-560.jpg 560w, images/resto1-880.jpg 880w"
+                    sizes="(max-width: 768px) 90vw, 50vw"
+                    width="880" height="495"
+                    alt="Fire-cooking kitchen with open flame and artisan ingredients" loading="lazy">
+                  <img class="showcase__panel-img"
+                    src="images/resto2-880.jpg"
+                    srcset="images/resto2-560.jpg 560w, images/resto2-880.jpg 880w"
+                    sizes="(max-width: 768px) 90vw, 50vw"
+                    width="880" height="495"
+                    alt="Chef grilling over open flame with billowing smoke" loading="lazy">
                 </div>
                 <div class="showcase__panel-details">
                   <p class="showcase__panel-desc">The heart of the retreat — where ritual meets craft, and every meal becomes ceremony. Nourishing, ritual-led dining featuring lakeside breakfasts, fireside dinners, chef events, and curated picnics. Culinary programming by Tavolo Group, the creative force behind iconic Bali venues, bringing a sharp focus on guest experience and operational excellence to Tennessee.</p>
@@ -1679,8 +1698,18 @@
             <div class="showcase__panel-body">
               <div class="showcase__panel-content">
                 <div class="showcase__panel-images">
-                  <img class="showcase__panel-img" src="wellness1.JPG" alt="Misty Appalachian lake surrounded by autumn foliage" loading="lazy">
-                  <img class="showcase__panel-img" src="wellness2.jpeg" alt="Wellness meditation in a sunlit forest clearing" loading="lazy" style="object-position: center 85%;">
+                  <img class="showcase__panel-img"
+                    src="images/wellness1-880.jpg"
+                    srcset="images/wellness1-560.jpg 560w, images/wellness1-880.jpg 880w"
+                    sizes="(max-width: 768px) 90vw, 50vw"
+                    width="880" height="495"
+                    alt="Misty Appalachian lake surrounded by autumn foliage" loading="lazy">
+                  <img class="showcase__panel-img"
+                    src="images/wellness2-880.jpg"
+                    srcset="images/wellness2-560.jpg 560w, images/wellness2-880.jpg 880w"
+                    sizes="(max-width: 768px) 90vw, 50vw"
+                    width="880" height="495"
+                    alt="Wellness meditation in a sunlit forest clearing" loading="lazy" style="object-position: center 85%;">
                 </div>
                 <div class="showcase__panel-details">
                   <p class="showcase__panel-desc">Not just a spa, but a connection to the land. Wellness as architecture, not amenity. Ritual and stillness shape the stay — where "silence is the main amenity." Walking distance from Foster Falls, guests gain effortless access to a 60-foot waterfall, canyon overlooks, and miles of protected hiking trails — an amenity no hotel can build, but one that defines the Tiba experience.</p>
@@ -1765,7 +1794,7 @@
               srcset="images/pitch-poster-600.jpg 600w, images/pitch-poster-1000.jpg 1000w"
               sizes="(max-width: 768px) 90vw, min(1000px, 75vw)"
               width="1000" height="562"
-              alt="Video pitch preview" loading="lazy">
+              alt="Video pitch preview" loading="lazy" decoding="async">
             <div class="video-pitch__play" id="pitchPlay">
               <div class="video-pitch__play-btn">
                 <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="8,5 20,12 8,19"/></svg>
@@ -1791,7 +1820,7 @@
               srcset="images/gallery-1-640.jpg 640w, images/gallery-1-1120.jpg 1120w"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
-              alt="Aerial view of infinity pool and lakeside suites at dusk" loading="lazy">
+              alt="Aerial view of infinity pool and lakeside suites at dusk" loading="lazy" decoding="async">
           </div>
           <div class="gallery__item" data-index="1">
             <img src="images/gallery-2-1120.jpg"
@@ -1839,7 +1868,7 @@
               srcset="images/location-map-800.jpg 800w, images/location-map-1300.jpg 1300w"
               sizes="(max-width: 1024px) 90vw, 45vw"
               width="1300" height="731"
-              alt="Aerial site map of Tiba Tennessee property" loading="lazy">
+              alt="Aerial site map of Tiba Tennessee property" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -1938,7 +1967,7 @@
       <div class="container">
         <div class="footer__bottom-inner">
           <div class="footer__logo">
-            <img src="images/logo-portrait.png" alt="Tiba Living" width="159" height="240">
+            <img src="images/logo-portrait.png" alt="Tiba Living" width="159" height="240" loading="lazy" decoding="async">
           </div>
           <div class="footer__links">
             <div class="footer__link-group">
@@ -1978,8 +2007,28 @@
   </div>
 
   <!-- ============ JAVASCRIPT ============ -->
-  <script src="https://player.vimeo.com/api/player.js"></script>
   <script>
+    // ---- Lazy-load hero Vimeo iframe when page is interactive ----
+    (function() {
+      var iframe = document.getElementById('heroVimeoIframe');
+      if (iframe && iframe.dataset.src) {
+        // Use requestIdleCallback or fallback to setTimeout for deferred load
+        var load = function() {
+          iframe.src = iframe.dataset.src;
+          // Load Vimeo Player API only after iframe is set
+          var s = document.createElement('script');
+          s.src = 'https://player.vimeo.com/api/player.js';
+          s.onload = function() { window.dispatchEvent(new Event('vimeo-ready')); };
+          document.body.appendChild(s);
+        };
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(load, { timeout: 2000 });
+        } else {
+          setTimeout(load, 1500);
+        }
+      }
+    })();
+
     // ---- Navbar scroll behavior ----
     const navbar = document.getElementById('navbar');
     let lastScroll = 0;
@@ -2084,12 +2133,14 @@
     }
 
     // ---- Hero video (Vimeo): sound toggle + pause when out of view ----
-    const heroIframe = document.getElementById('heroVimeoIframe');
-    const soundToggle = document.getElementById('heroSoundToggle');
-    const iconMuted = soundToggle?.querySelector('.hero__sound-icon--muted');
-    const iconOn = soundToggle?.querySelector('.hero__sound-icon--on');
+    function initHeroVimeo() {
+      const heroIframe = document.getElementById('heroVimeoIframe');
+      const soundToggle = document.getElementById('heroSoundToggle');
+      const iconMuted = soundToggle?.querySelector('.hero__sound-icon--muted');
+      const iconOn = soundToggle?.querySelector('.hero__sound-icon--on');
 
-    if (heroIframe && typeof Vimeo !== 'undefined') {
+      if (!heroIframe || typeof Vimeo === 'undefined') return;
+
       const heroPlayer = new Vimeo.Player(heroIframe);
       const heroPoster = document.getElementById('heroPoster');
       let isMuted = true;
@@ -2153,6 +2204,13 @@
         });
       }, { threshold: 0 });
       heroObserver.observe(heroSection);
+    }
+
+    // Init when Vimeo API is ready (deferred load)
+    if (typeof Vimeo !== 'undefined') {
+      initHeroVimeo();
+    } else {
+      window.addEventListener('vimeo-ready', initHeroVimeo);
     }
 
     // ---- Form handling — sends to luke@tibaliving.com via mailto ----
