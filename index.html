@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://player.vimeo.com">
+  <link rel="preconnect" href="https://i.vimeocdn.com">
+  <link rel="preconnect" href="https://f.vimeocdn.com">
   <title>Tiba Tennessee | Luxury Wellness Resort Investment</title>
   <meta name="description" content="Invest in Tiba Tennessee—a nature-led, ritual-focused landscape hotel in the Appalachian Highlands.">
   <meta property="og:title" content="Tiba Tennessee | Luxury Wellness Resort Investment">
@@ -232,12 +235,28 @@
       position: relative;
       z-index: 2;
     }
-    .hero__video {
+    .hero__poster {
       position: absolute;
       inset: 0;
       width: 100%; height: 100%;
       object-fit: cover;
       opacity: 0.7;
+      z-index: 1;
+      transition: opacity 0.8s ease;
+    }
+    .hero__poster.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .hero__video {
+      position: absolute;
+      inset: -10%; /* slight oversize to crop Vimeo letterboxing */
+      width: 120%; height: 120%;
+      object-fit: cover;
+      opacity: 0.7;
+      border: none;
+      pointer-events: none;
     }
     .hero__sound-toggle {
       position: absolute;
@@ -654,6 +673,18 @@
       object-fit: cover;
       display: block;
     }
+    .video-pitch__poster {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .video-pitch__iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
     .video-pitch__play {
       position: absolute;
       inset: 0;
@@ -1037,9 +1068,12 @@
 
     <!-- ============ HERO ============ -->
     <section class="hero" id="hero">
-      <video class="hero__video" id="heroVideo" autoplay muted loop playsinline poster="Renders/LOBBY _ SUITES 2 (3).jpg">
-        <source src="new hero vid.MOV" type="video/mp4">
-      </video>
+      <img class="hero__poster" id="heroPoster" src="Renders/LOBBY _ SUITES 2 (3).jpg" alt="">
+      <iframe class="hero__video" id="heroVimeoIframe"
+        src="https://player.vimeo.com/video/1165886210?background=1&autoplay=1&loop=1&muted=1&badge=0&autopause=0&player_id=heroVimeoIframe&app_id=58479"
+        allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+        referrerpolicy="strict-origin-when-cross-origin"
+        title="Hero video"></iframe>
       <button class="hero__sound-toggle" id="heroSoundToggle" aria-label="Unmute video">
         <svg class="hero__sound-icon hero__sound-icon--muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M11 5L6 9H2v6h4l5 4V5z"/>
@@ -1203,10 +1237,8 @@
           <h2 class="section-title reveal reveal-delay-1">Hear the Vision</h2>
         </div>
         <div class="video-pitch__inner">
-          <div class="video-pitch__wrap reveal reveal-delay-2">
-            <video class="video-pitch__video" id="pitchVideo" preload="metadata" playsinline poster="Renders/Lakeside Suite Facade (2).png">
-              <source src="Video Pitch.mp4" type="video/mp4">
-            </video>
+          <div class="video-pitch__wrap reveal reveal-delay-2" id="pitchWrap">
+            <img class="video-pitch__poster" src="Renders/Lakeside Suite Facade (2).png" alt="Video pitch preview">
             <div class="video-pitch__play" id="pitchPlay">
               <div class="video-pitch__play-btn">
                 <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="8,5 20,12 8,19"/></svg>
@@ -1324,6 +1356,7 @@
   </footer>
 
   <!-- ============ JAVASCRIPT ============ -->
+  <script src="https://player.vimeo.com/api/player.js"></script>
   <script>
     // ---- Navbar scroll behavior ----
     const navbar = document.getElementById('navbar');
@@ -1389,78 +1422,90 @@
 
     document.querySelectorAll('.hero__metrics-number').forEach(el => countObserver.observe(el));
 
-    // ---- Video pitch play/pause ----
-    const pitchVideo = document.getElementById('pitchVideo');
+    // ---- Video pitch — Vimeo embed on click ----
+    const pitchWrap = document.getElementById('pitchWrap');
     const pitchPlay = document.getElementById('pitchPlay');
-    if (pitchPlay && pitchVideo) {
+    if (pitchPlay && pitchWrap) {
       pitchPlay.addEventListener('click', () => {
-        pitchVideo.play();
-        pitchVideo.controls = true;
-        pitchPlay.classList.add('hidden');
-      });
-      pitchVideo.addEventListener('pause', () => {
-        if (pitchVideo.currentTime > 0 && !pitchVideo.ended) {
-          pitchPlay.classList.remove('hidden');
-          pitchVideo.controls = false;
-        }
-      });
-      pitchVideo.addEventListener('ended', () => {
-        pitchPlay.classList.remove('hidden');
-        pitchVideo.controls = false;
+        const iframe = document.createElement('iframe');
+        iframe.className = 'video-pitch__iframe';
+        iframe.src = 'https://player.vimeo.com/video/1146876833?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479';
+        iframe.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share';
+        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+        iframe.title = 'Video Pitch';
+        // Remove poster and play button, insert iframe
+        pitchWrap.querySelector('.video-pitch__poster').remove();
+        pitchPlay.remove();
+        pitchWrap.appendChild(iframe);
       });
     }
 
-    // ---- Hero video: autoplay with sound, click to pause, pause when out of view ----
-    const heroVideo = document.getElementById('heroVideo');
+    // ---- Hero video (Vimeo): sound toggle + pause when out of view ----
+    const heroIframe = document.getElementById('heroVimeoIframe');
     const soundToggle = document.getElementById('heroSoundToggle');
     const iconMuted = soundToggle?.querySelector('.hero__sound-icon--muted');
     const iconOn = soundToggle?.querySelector('.hero__sound-icon--on');
 
-    function updateSoundIcon() {
-      if (!soundToggle) return;
-      if (heroVideo.muted) {
-        iconMuted.style.display = '';
-        iconOn.style.display = 'none';
-        soundToggle.classList.remove('unmuted');
-      } else {
-        iconMuted.style.display = 'none';
-        iconOn.style.display = '';
-        soundToggle.classList.add('unmuted');
-      }
-    }
+    if (heroIframe && typeof Vimeo !== 'undefined') {
+      const heroPlayer = new Vimeo.Player(heroIframe);
+      const heroPoster = document.getElementById('heroPoster');
+      let isMuted = true;
+      let userPaused = false;
 
-    if (heroVideo) {
+      // Fade out poster once Vimeo video starts playing
+      heroPlayer.on('playing', function onFirstPlay() {
+        if (heroPoster) heroPoster.classList.add('fade-out');
+        heroPlayer.off('playing', onFirstPlay);
+      });
+
+      function updateSoundIcon() {
+        if (!soundToggle) return;
+        if (isMuted) {
+          iconMuted.style.display = '';
+          iconOn.style.display = 'none';
+          soundToggle.classList.remove('unmuted');
+        } else {
+          iconMuted.style.display = 'none';
+          iconOn.style.display = '';
+          soundToggle.classList.add('unmuted');
+        }
+      }
+
       // Sound toggle button
       if (soundToggle) {
         soundToggle.addEventListener('click', (e) => {
           e.stopPropagation();
-          heroVideo.muted = !heroVideo.muted;
+          isMuted = !isMuted;
+          heroPlayer.setVolume(isMuted ? 0 : 1);
           updateSoundIcon();
         });
       }
 
-      // Click/tap on video to toggle play/pause
-      let userPaused = false;
-      heroVideo.addEventListener('click', () => {
-        if (heroVideo.paused) {
-          heroVideo.muted = false;
-          userPaused = false;
-          heroVideo.play();
-          updateSoundIcon();
-        } else {
-          userPaused = true;
-          heroVideo.pause();
-        }
-      });
+      // Click on hero overlay to toggle play/pause
+      const heroOverlay = document.querySelector('.hero__overlay');
+      if (heroOverlay) {
+        heroOverlay.style.cursor = 'pointer';
+        heroOverlay.addEventListener('click', () => {
+          if (userPaused) {
+            userPaused = false;
+            heroPlayer.play();
+          } else {
+            userPaused = true;
+            heroPlayer.pause();
+          }
+        });
+      }
 
-      // Pause video+audio only when hero is fully out of view, resume when back
+      // Pause when hero scrolls fully out of view, resume when back
       const heroSection = document.getElementById('hero');
       const heroObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) {
-            heroVideo.pause();
+            heroPlayer.setVolume(0);
+            heroPlayer.pause();
           } else if (!userPaused) {
-            heroVideo.play();
+            heroPlayer.play();
+            heroPlayer.setVolume(isMuted ? 0 : 1);
           }
         });
       }, { threshold: 0 });
