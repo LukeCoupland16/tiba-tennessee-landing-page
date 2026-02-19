@@ -6,7 +6,7 @@
   <link rel="preload" as="image" href="images/hero-poster-1920.jpg"
     imagesrcset="images/hero-poster-800.jpg 800w, images/hero-poster-1200.jpg 1200w, images/hero-poster-1920.jpg 1920w"
     imagesizes="100vw" fetchpriority="high">
-  <title>Tiba Tennessee | Luxury Wellness Resort Investment</title>
+  <title>Tiba Tennessee | Luxury Wellness Retreat Investment</title>
   <meta name="description" content="Invest in Tiba Tennessee—a nature-led, ritual-focused landscape hotel in the Appalachian Highlands.">
   <!-- Favicons -->
   <link rel="icon" href="images/favicon.ico" sizes="32x32">
@@ -16,14 +16,14 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#222323">
   <!-- Open Graph / Social -->
-  <meta property="og:title" content="Tiba Tennessee | Luxury Wellness Resort Investment">
+  <meta property="og:title" content="Tiba Tennessee | Luxury Wellness Retreat Investment">
   <meta property="og:description" content="A nature-led, ritual-focused landscape hotel in the Appalachian Highlands.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="images/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tiba Tennessee | Luxury Wellness Resort Investment">
+  <meta name="twitter:title" content="Tiba Tennessee | Luxury Wellness Retreat Investment">
   <meta name="twitter:description" content="A nature-led, ritual-focused landscape hotel in the Appalachian Highlands.">
   <meta name="twitter:image" content="images/og-image.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -274,11 +274,10 @@
 
     .hero__video {
       position: absolute;
-      inset: -10%; /* slight oversize to crop Vimeo letterboxing */
-      width: 120%; height: 120%;
+      inset: 0;
+      width: 100%; height: 100%;
       object-fit: cover;
       opacity: 0.7;
-      border: none;
       pointer-events: none;
     }
     .hero__sound-toggle {
@@ -1475,13 +1474,11 @@
         srcset="images/hero-poster-800.jpg 800w, images/hero-poster-1200.jpg 1200w, images/hero-poster-1920.jpg 1920w"
         sizes="100vw"
         width="1920" height="1080"
-        alt="Aerial view of Tiba Tennessee resort at dusk"
+        alt="Aerial view of Tiba Tennessee retreat at dusk"
         fetchpriority="high">
-      <iframe class="hero__video" id="heroVimeoIframe"
-        data-src="https://player.vimeo.com/video/1165886210?background=1&autoplay=1&loop=1&muted=1&badge=0&autopause=0&player_id=heroVimeoIframe&app_id=58479"
-        allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
-        referrerpolicy="strict-origin-when-cross-origin"
-        title="Hero video"></iframe>
+      <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto">
+        <source src="30222-380473795.mp4" type="video/mp4">
+      </video>
       <button class="hero__sound-toggle" id="heroSoundToggle" aria-label="Unmute video">
         <svg class="hero__sound-icon hero__sound-icon--muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M11 5L6 9H2v6h4l5 4V5z"/>
@@ -1552,14 +1549,12 @@
           </div>
           <div class="concept__images reveal reveal-delay-2">
             <img class="concept__img-1"
-              src="images/concept-1-960.jpg"
-              srcset="images/concept-1-600.jpg 600w, images/concept-1-960.jpg 960w"
+              src="overlap2.jpg"
               sizes="(max-width: 1024px) 85vw, 36vw"
               width="960" height="540"
               alt="Luxury suite interior with natural materials" loading="lazy" decoding="async">
             <img class="concept__img-2"
-              src="images/concept-2-800.jpg"
-              srcset="images/concept-2-500.jpg 500w, images/concept-2-800.jpg 800w"
+              src="overlap1.jpg"
               sizes="(max-width: 1024px) 65vw, 29vw"
               width="800" height="450"
               alt="Aerial view of the infinity lake pool and lakeside suites" loading="lazy" decoding="async">
@@ -1583,7 +1578,7 @@
               <span class="showcase__panel-num">01</span>
               <div class="showcase__panel-title-row">
                 <h3 class="showcase__panel-title">Lakeside Suites</h3>
-                <span class="showcase__panel-tagline">24 keys, lake views, in-room rituals</span>
+                <span class="showcase__panel-tagline">45 keys, lake views, in-room rituals</span>
               </div>
               <div class="showcase__panel-toggle">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -1593,20 +1588,18 @@
               <div class="showcase__panel-content">
                 <div class="showcase__panel-images">
                   <img class="showcase__panel-img"
-                    src="images/suite1-880.jpg"
-                    srcset="images/suite1-560.jpg 560w, images/suite1-880.jpg 880w"
+                    src="n-suite1.jpg"
                     sizes="(max-width: 768px) 90vw, 50vw"
                     width="880" height="495"
                     alt="Lakeside suite deck overlooking the lake with fire pit" loading="lazy">
                   <img class="showcase__panel-img"
-                    src="images/suite2-880.jpg"
-                    srcset="images/suite2-560.jpg 560w, images/suite2-880.jpg 880w"
+                    src="n-suite2.jpg"
                     sizes="(max-width: 768px) 90vw, 50vw"
                     width="880" height="495"
                     alt="Suite interior with natural materials and fireplace" loading="lazy">
                 </div>
                 <div class="showcase__panel-details">
-                  <p class="showcase__panel-desc">A 24-key retreat shaped from the land: a lake revealed from a spring, with suites individually oriented to the water — some at the bank, others elevated for horizon-line views. Architecture grown from the site, not placed on it. Balinese craft meets Tennessee forest — teak, stone, and native geology forming spaces where indoor-outdoor living is not a feature, but the foundation.</p>
+                  <p class="showcase__panel-desc">A 45-key retreat shaped from the land: a lake revealed from a spring, with suites individually oriented to the water — some at the bank, others elevated for horizon-line views. Architecture grown from the site, not placed on it. Balinese craft meets Tennessee forest — teak, stone, and native geology forming spaces where indoor-outdoor living is not a feature, but the foundation.</p>
                   <div class="showcase__panel-highlights">
                     <div class="showcase__panel-highlight">
                       <svg class="showcase__panel-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -1646,14 +1639,12 @@
               <div class="showcase__panel-content">
                 <div class="showcase__panel-images">
                   <img class="showcase__panel-img"
-                    src="images/resto1-880.jpg"
-                    srcset="images/resto1-560.jpg 560w, images/resto1-880.jpg 880w"
+                    src="n-lobby1.jpg"
                     sizes="(max-width: 768px) 90vw, 50vw"
                     width="880" height="495"
                     alt="Fire-cooking kitchen with open flame and artisan ingredients" loading="lazy">
                   <img class="showcase__panel-img"
-                    src="images/resto2-880.jpg"
-                    srcset="images/resto2-560.jpg 560w, images/resto2-880.jpg 880w"
+                    src="n-lobby2.jpg"
                     sizes="(max-width: 768px) 90vw, 50vw"
                     width="880" height="495"
                     alt="Chef grilling over open flame with billowing smoke" loading="lazy">
@@ -1816,39 +1807,46 @@
       <div class="container">
         <div class="gallery__scroll reveal reveal-delay-2" id="galleryScroll">
           <div class="gallery__item" data-index="0">
-            <img src="images/gallery-1-1120.jpg"
-              srcset="images/gallery-1-640.jpg 640w, images/gallery-1-1120.jpg 1120w"
+            <img src="n-suite1.jpg"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
-              alt="Aerial view of infinity pool and lakeside suites at dusk" loading="lazy" decoding="async">
+              alt="Lakeside suite exterior" loading="lazy" decoding="async">
           </div>
           <div class="gallery__item" data-index="1">
-            <img src="images/gallery-2-1120.jpg"
-              srcset="images/gallery-2-640.jpg 640w, images/gallery-2-1120.jpg 1120w"
+            <img src="n-suite2.jpg"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
-              alt="Lakeside suite facade with natural stone and timber" loading="lazy">
+              alt="Lakeside suite interior" loading="lazy">
           </div>
           <div class="gallery__item" data-index="2">
-            <img src="images/gallery-3-1120.jpg"
-              srcset="images/gallery-3-640.jpg 640w, images/gallery-3-1120.jpg 1120w"
+            <img src="n-lobby1.jpg"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
-              alt="Suite interior with warm natural materials" loading="lazy">
+              alt="The lobby" loading="lazy">
           </div>
           <div class="gallery__item" data-index="3">
-            <img src="images/gallery-4-1120.jpg"
-              srcset="images/gallery-4-640.jpg 640w, images/gallery-4-1120.jpg 1120w"
+            <img src="n-lobby2.jpg"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
-              alt="Lakeside suite on the water's edge" loading="lazy">
+              alt="The lobby gathering spaces" loading="lazy">
           </div>
           <div class="gallery__item" data-index="4">
-            <img src="images/gallery-5-1120.jpg"
-              srcset="images/gallery-5-640.jpg 640w, images/gallery-5-1120.jpg 1120w"
+            <img src="gal.jpg"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
-              alt="The lobby and gathering spaces" loading="lazy">
+              alt="Tiba Tennessee" loading="lazy">
+          </div>
+          <div class="gallery__item" data-index="5">
+            <img src="overlap1.jpg"
+              sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
+              width="1120" height="630"
+              alt="Tiba Tennessee retreat" loading="lazy">
+          </div>
+          <div class="gallery__item" data-index="6">
+            <img src="overlap2.jpg"
+              sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
+              width="1120" height="630"
+              alt="Tiba Tennessee landscape" loading="lazy">
           </div>
         </div>
       </div>
@@ -1919,7 +1917,10 @@
       <div class="footer__form-section">
         <h2 class="footer__form-title reveal">Request the Investor Deck</h2>
         <p class="footer__form-sub reveal reveal-delay-1">Learn more about the opportunity at Tiba Tennessee.</p>
-        <form class="footer__form reveal reveal-delay-2" id="deckForm" onsubmit="return handleSubmit(event)">
+        <form class="footer__form reveal reveal-delay-2" id="deckForm" action="https://formsubmit.co/luke@tibaliving.com" method="POST">
+          <input type="hidden" name="_subject" value="New Investor Deck Request — Tiba Tennessee">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://tibatennessee.com?submitted=true">
           <input class="footer__input" type="text" name="name" placeholder="Full Name" required>
           <input class="footer__input" type="email" name="email" placeholder="Email Address" required>
           <select class="footer__select" name="investor_type" required>
@@ -2008,24 +2009,15 @@
 
   <!-- ============ JAVASCRIPT ============ -->
   <script>
-    // ---- Lazy-load hero Vimeo iframe when page is interactive ----
+    // ---- Hero video: fade out poster once playing ----
     (function() {
-      var iframe = document.getElementById('heroVimeoIframe');
-      if (iframe && iframe.dataset.src) {
-        // Use requestIdleCallback or fallback to setTimeout for deferred load
-        var load = function() {
-          iframe.src = iframe.dataset.src;
-          // Load Vimeo Player API only after iframe is set
-          var s = document.createElement('script');
-          s.src = 'https://player.vimeo.com/api/player.js';
-          s.onload = function() { window.dispatchEvent(new Event('vimeo-ready')); };
-          document.body.appendChild(s);
-        };
-        if ('requestIdleCallback' in window) {
-          requestIdleCallback(load, { timeout: 2000 });
-        } else {
-          setTimeout(load, 1500);
-        }
+      var video = document.getElementById('heroVideo');
+      var poster = document.getElementById('heroPoster');
+      if (video && poster) {
+        video.addEventListener('playing', function onFirstPlay() {
+          poster.classList.add('fade-out');
+          video.removeEventListener('playing', onFirstPlay);
+        });
       }
     })();
 
@@ -2132,25 +2124,16 @@
       });
     }
 
-    // ---- Hero video (Vimeo): sound toggle + pause when out of view ----
-    function initHeroVimeo() {
-      const heroIframe = document.getElementById('heroVimeoIframe');
+    // ---- Hero video: sound toggle + pause when out of view ----
+    (function() {
+      const heroVideo = document.getElementById('heroVideo');
       const soundToggle = document.getElementById('heroSoundToggle');
       const iconMuted = soundToggle?.querySelector('.hero__sound-icon--muted');
       const iconOn = soundToggle?.querySelector('.hero__sound-icon--on');
+      if (!heroVideo) return;
 
-      if (!heroIframe || typeof Vimeo === 'undefined') return;
-
-      const heroPlayer = new Vimeo.Player(heroIframe);
-      const heroPoster = document.getElementById('heroPoster');
       let isMuted = true;
       let userPaused = false;
-
-      // Fade out poster once Vimeo video starts playing
-      heroPlayer.on('playing', function onFirstPlay() {
-        if (heroPoster) heroPoster.classList.add('fade-out');
-        heroPlayer.off('playing', onFirstPlay);
-      });
 
       function updateSoundIcon() {
         if (!soundToggle) return;
@@ -2170,7 +2153,7 @@
         soundToggle.addEventListener('click', (e) => {
           e.stopPropagation();
           isMuted = !isMuted;
-          heroPlayer.setVolume(isMuted ? 0 : 1);
+          heroVideo.muted = isMuted;
           updateSoundIcon();
         });
       }
@@ -2182,10 +2165,10 @@
         heroOverlay.addEventListener('click', () => {
           if (userPaused) {
             userPaused = false;
-            heroPlayer.play();
+            heroVideo.play();
           } else {
             userPaused = true;
-            heroPlayer.pause();
+            heroVideo.pause();
           }
         });
       }
@@ -2195,48 +2178,17 @@
       const heroObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) {
-            heroPlayer.setVolume(0);
-            heroPlayer.pause();
+            heroVideo.muted = true;
+            heroVideo.pause();
           } else if (!userPaused) {
-            heroPlayer.play();
-            heroPlayer.setVolume(isMuted ? 0 : 1);
+            heroVideo.play();
+            heroVideo.muted = isMuted;
           }
         });
       }, { threshold: 0 });
       heroObserver.observe(heroSection);
-    }
+    })();
 
-    // Init when Vimeo API is ready (deferred load)
-    if (typeof Vimeo !== 'undefined') {
-      initHeroVimeo();
-    } else {
-      window.addEventListener('vimeo-ready', initHeroVimeo);
-    }
-
-    // ---- Form handling — sends to luke@tibaliving.com via mailto ----
-    function handleSubmit(e) {
-      e.preventDefault();
-      const form = e.target;
-      const data = new FormData(form);
-      const name = data.get('name');
-      const email = data.get('email');
-      const investorType = data.get('investor_type');
-      const phone = data.get('phone') || 'Not provided';
-
-      const subject = encodeURIComponent('Investor Deck Request — ' + name);
-      const body = encodeURIComponent(
-        'New investor deck request:\n\n' +
-        'Name: ' + name + '\n' +
-        'Email: ' + email + '\n' +
-        'Investor Type: ' + investorType + '\n' +
-        'Phone: ' + phone
-      );
-
-      window.location.href = 'mailto:luke@tibaliving.com?subject=' + subject + '&body=' + body;
-      alert('Thank you for your interest. Our team will be in touch shortly.');
-      form.reset();
-      return false;
-    }
 
     // ---- Gallery: drag-to-scroll ----
     const galleryScroll = document.getElementById('galleryScroll');
