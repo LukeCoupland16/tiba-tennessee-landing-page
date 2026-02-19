@@ -1093,6 +1093,16 @@
     }
     .timeline__item.completed .timeline__dot {
       background: var(--ivory);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .timeline__item.completed .timeline__dot::after {
+      content: '✓';
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--midnight);
+      line-height: 1;
     }
     .timeline__item.current .timeline__dot {
       background: var(--river-green);
@@ -1894,7 +1904,7 @@
             <div class="timeline__item completed reveal">
               <div class="timeline__dot"></div>
               <div class="timeline__title">Land Asset Acquired</div>
-              <div class="timeline__desc">High-impact value adds: including securing land-use approvals, engineering, septic and wastewater plan, establishing utility access, grading plans, completing surveys and environmental studies.</div>
+              <div class="timeline__desc">High-impact value adds: including securing land-use approvals, permits already approved, engineering, septic and wastewater plan, establishing utility access, grading plans, completing surveys and environmental studies.</div>
             </div>
             <div class="timeline__item completed reveal reveal-delay-1">
               <div class="timeline__dot"></div>
