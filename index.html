@@ -118,7 +118,7 @@
       top: 0; left: 0; right: 0;
       z-index: 1000;
       padding: 20px 0;
-      transition: background-color 0.5s var(--ease-out), padding 0.4s var(--ease-out), backdrop-filter 0.5s var(--ease-out);
+      transition: background-color 0.5s var(--ease-out), padding 0.4s var(--ease-out), -webkit-backdrop-filter 0.5s var(--ease-out), backdrop-filter 0.5s var(--ease-out);
     }
     .navbar.scrolled {
       background-color: rgba(34, 35, 35, 0.97);
@@ -1167,6 +1167,7 @@
       border-color: var(--river-green);
     }
     .footer__select {
+      -webkit-appearance: none;
       appearance: none;
       background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23F0EEDC' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
@@ -1464,11 +1465,11 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#concept" onclick="closeMobile()">Vision</a>
-    <a href="#showcase" onclick="closeMobile()">The Asset</a>
-    <a href="#gallery" onclick="closeMobile()">Gallery</a>
-    <a href="#location" onclick="closeMobile()">Location</a>
-    <a href="#footer" class="btn-cta" onclick="closeMobile()">Request Deck</a>
+    <a href="#concept">Vision</a>
+    <a href="#showcase">The Asset</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+    <a href="#footer" class="btn-cta">Request Deck</a>
   </div>
 
   <main>
@@ -1927,9 +1928,12 @@
           <input type="hidden" name="_subject" value="New Investor Deck Request — Tiba Tennessee">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_next" value="https://tennessee.tibaliving.com?submitted=true">
-          <input class="footer__input" type="text" name="name" placeholder="Full Name" required>
-          <input class="footer__input" type="email" name="email" placeholder="Email Address" required>
-          <select class="footer__select" name="investor_type" required>
+          <label for="deck-name" class="sr-only">Full Name</label>
+          <input class="footer__input" type="text" name="name" id="deck-name" placeholder="Full Name" required>
+          <label for="deck-email" class="sr-only">Email Address</label>
+          <input class="footer__input" type="email" name="email" id="deck-email" placeholder="Email Address" required>
+          <label for="deck-investor" class="sr-only">Investor Type</label>
+          <select class="footer__select" name="investor_type" id="deck-investor" required>
             <option value="" disabled selected>Investor Type</option>
             <option value="angel">Angel Investor</option>
             <option value="vc">Venture Capital</option>
@@ -1937,8 +1941,10 @@
             <option value="family_office">Family Office</option>
             <option value="other">Other</option>
           </select>
-          <input class="footer__input" type="tel" name="phone" placeholder="Phone Number">
-          <textarea class="footer__input footer__textarea" name="message" placeholder="Message / Notes" rows="3"></textarea>
+          <label for="deck-phone" class="sr-only">Phone Number</label>
+          <input class="footer__input" type="tel" name="phone" id="deck-phone" placeholder="Phone Number">
+          <label for="deck-message" class="sr-only">Message</label>
+          <textarea class="footer__input footer__textarea" name="message" id="deck-message" placeholder="Message / Notes" rows="3"></textarea>
           <button class="footer__submit" type="submit">Request Deck</button>
         </form>
       </div>
@@ -2008,7 +2014,7 @@
     <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
     </button>
-    <img class="lightbox__img" id="lightboxImg" src="" alt="">
+    <img class="lightbox__img" id="lightboxImg" src="" alt="Gallery image">
     <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
     </button>
@@ -2052,6 +2058,9 @@
       mobileMenu.classList.remove('active');
       document.body.style.overflow = '';
     }
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMobile);
+    });
 
     // ---- Scroll reveal ----
     const revealObserver = new IntersectionObserver((entries) => {
@@ -2277,6 +2286,26 @@
     document.getElementById('lightboxNext').addEventListener('click', (e) => {
       e.stopPropagation();
       navigateLightbox(1);
+    });
+
+    // ---- Form submission loading state ----
+    const deckForm = document.getElementById('deckForm');
+    if (deckForm) {
+      deckForm.addEventListener('submit', function() {
+        const btn = deckForm.querySelector('.footer__submit');
+        btn.textContent = 'Submitting…';
+        btn.disabled = true;
+        btn.style.opacity = '0.6';
+      });
+    }
+
+    // ---- Recalculate accordion max-height on resize ----
+    window.addEventListener('resize', () => {
+      const activePanel = document.querySelector('.showcase__panel.active');
+      if (activePanel) {
+        const body = activePanel.querySelector('.showcase__panel-body');
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
     });
   </script>
 
