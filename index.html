@@ -1011,6 +1011,7 @@
     .location__map {
       border-radius: 3px;
       overflow: hidden;
+      margin-right: calc(-1 * clamp(20px, 4vw, 60px));
     }
     .location__map img {
       width: 100%;
@@ -1175,6 +1176,12 @@
       background-repeat: no-repeat;
       background-position: right 16px center;
       padding-right: 40px;
+    }
+    .footer__textarea {
+      grid-column: 1 / -1;
+      resize: vertical;
+      min-height: 80px;
+      font-family: var(--font-sans);
     }
     .footer__select option { background: var(--stone); color: var(--ivory); }
     .footer__submit {
@@ -1939,6 +1946,7 @@
             <option value="other">Other</option>
           </select>
           <input class="footer__input" type="tel" name="phone" placeholder="Phone Number">
+          <textarea class="footer__input footer__textarea" name="message" placeholder="Message / Notes" rows="3"></textarea>
           <button class="footer__submit" type="submit">Request Deck</button>
         </form>
       </div>
