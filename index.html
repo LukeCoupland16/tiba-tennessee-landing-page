@@ -929,6 +929,12 @@
     .lightbox.active .lightbox__img {
       transform: scale(1);
     }
+    .lightbox__img.lightbox__img--landscape {
+      max-width: 90vw;
+      max-height: 85vh;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
     .lightbox__close {
       position: absolute;
       top: clamp(20px, 3vw, 40px);
@@ -1831,7 +1837,7 @@
               width="1120" height="630"
               alt="The lobby gathering spaces" loading="lazy">
           </div>
-          <div class="gallery__item" data-index="4">
+          <div class="gallery__item" data-index="4" data-landscape="true">
             <img src="gal.jpg"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
@@ -1921,7 +1927,7 @@
         <form class="footer__form reveal reveal-delay-2" id="deckForm" action="https://formsubmit.co/luke@tibaliving.com" method="POST">
           <input type="hidden" name="_subject" value="New Investor Deck Request — Tiba Tennessee">
           <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://tibatennessee.com?submitted=true">
+          <input type="hidden" name="_next" value="https://tennessee.tibaliving.com?submitted=true">
           <input class="footer__input" type="text" name="name" placeholder="Full Name" required>
           <input class="footer__input" type="email" name="email" placeholder="Email Address" required>
           <select class="footer__select" name="investor_type" required>
@@ -2220,16 +2226,23 @@
     // ---- Lightbox ----
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
-    const gallerySrcs = Array.from(document.querySelectorAll('.gallery__item img')).map(img => img.src);
+    const galleryItems = document.querySelectorAll('.gallery__item');
+    const gallerySrcs = Array.from(galleryItems).map(item => item.querySelector('img').src);
+    const galleryLandscape = Array.from(galleryItems).map(item => item.dataset.landscape === 'true');
     let currentLightbox = 0;
 
-    document.querySelectorAll('.gallery__item').forEach((item) => {
+    function updateLightboxLandscape() {
+      lightboxImg.classList.toggle('lightbox__img--landscape', galleryLandscape[currentLightbox]);
+    }
+
+    galleryItems.forEach((item) => {
       item.addEventListener('click', () => {
         if (galleryScroll && galleryScroll.contains(item) && hasDragged) return;
         const idx = parseInt(item.dataset.index);
         currentLightbox = idx;
         lightboxImg.src = gallerySrcs[idx];
         lightboxImg.alt = item.querySelector('img').alt;
+        updateLightboxLandscape();
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
       });
@@ -2254,6 +2267,7 @@
     function navigateLightbox(dir) {
       currentLightbox = (currentLightbox + dir + gallerySrcs.length) % gallerySrcs.length;
       lightboxImg.src = gallerySrcs[currentLightbox];
+      updateLightboxLandscape();
     }
 
     document.getElementById('lightboxPrev').addEventListener('click', (e) => {
