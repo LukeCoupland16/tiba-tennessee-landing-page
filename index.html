@@ -523,25 +523,23 @@
       max-width: 520px;
     }
     .concept__images {
-      position: relative;
-      height: clamp(400px, 50vw, 620px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: end;
     }
     .concept__img-1 {
-      position: absolute;
-      top: 0; left: 0;
-      width: 58%;
-      height: 52%;
+      width: 100%;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
       border-radius: 2px;
+      transform: translateY(-24px);
     }
     .concept__img-2 {
-      position: absolute;
-      bottom: 0; right: 0;
-      width: 72%;
-      height: 70%;
+      width: 100%;
+      aspect-ratio: 3 / 4;
       object-fit: cover;
       border-radius: 2px;
-      border: 3px solid var(--stone);
     }
 
     /* ========================================
@@ -1308,9 +1306,8 @@
     @media (max-width: 480px) {
       .hero__press-logos { gap: 16px; }
       .hero__press-logos span { font-size: 0.82rem; }
-      .concept__images { height: 320px; }
-      .concept__img-1 { width: 65%; height: 48%; }
-      .concept__img-2 { width: 85%; height: 60%; }
+      .concept__img-1 { transform: translateY(0); }
+      .concept__img-2 { aspect-ratio: 3 / 3; }
       .showcase__panel-img { height: 180px; }
     }
 
