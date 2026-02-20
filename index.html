@@ -1790,12 +1790,9 @@
         </div>
         <div class="video-pitch__inner">
           <div class="video-pitch__wrap reveal reveal-delay-2" id="pitchWrap">
-            <img class="video-pitch__poster"
-              src="images/pitch-poster-1000.jpg"
-              srcset="images/pitch-poster-600.jpg 600w, images/pitch-poster-1000.jpg 1000w"
-              sizes="(max-width: 768px) 90vw, min(1000px, 75vw)"
-              width="1000" height="562"
-              alt="Video pitch preview" loading="lazy" decoding="async">
+            <video class="video-pitch__video" id="pitchVideo" preload="metadata" playsinline>
+              <source src="Pitch-narration-compressed.mp4" type="video/mp4">
+            </video>
             <div class="video-pitch__play" id="pitchPlay">
               <div class="video-pitch__play-btn">
                 <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="8,5 20,12 8,19"/></svg>
@@ -2129,21 +2126,14 @@
 
     document.querySelectorAll('.hero__metrics-number').forEach(el => countObserver.observe(el));
 
-    // ---- Video pitch — Vimeo embed on click ----
-    const pitchWrap = document.getElementById('pitchWrap');
+    // ---- Video pitch — local video play on click ----
+    const pitchVideo = document.getElementById('pitchVideo');
     const pitchPlay = document.getElementById('pitchPlay');
-    if (pitchPlay && pitchWrap) {
+    if (pitchPlay && pitchVideo) {
       pitchPlay.addEventListener('click', () => {
-        const iframe = document.createElement('iframe');
-        iframe.className = 'video-pitch__iframe';
-        iframe.src = 'https://player.vimeo.com/video/1146876833?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479';
-        iframe.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share';
-        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
-        iframe.title = 'Video Pitch';
-        // Remove poster and play button, insert iframe
-        pitchWrap.querySelector('.video-pitch__poster').remove();
-        pitchPlay.remove();
-        pitchWrap.appendChild(iframe);
+        pitchPlay.classList.add('hidden');
+        pitchVideo.controls = true;
+        pitchVideo.play();
       });
     }
 
