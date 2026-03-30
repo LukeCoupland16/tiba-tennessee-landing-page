@@ -1120,6 +1120,64 @@
     }
 
     /* ========================================
+       PARTNER / TAVOLO GROUP
+    ======================================== */
+    .partner {
+      background: var(--white);
+      padding: clamp(80px, 10vw, 140px) 0;
+    }
+    .partner__grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(48px, 6vw, 80px);
+      align-items: start;
+    }
+    .partner__copy {
+      max-width: 560px;
+    }
+    .partner__copy p {
+      font-size: clamp(0.95rem, 1.05vw, 1rem);
+      font-weight: 300;
+      color: var(--stone);
+      opacity: 0.75;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+    .partner__cards {
+      display: grid;
+      gap: 20px;
+    }
+    .partner__card {
+      padding: 28px;
+      border: 1px solid rgba(34, 35, 35, 0.08);
+      border-radius: 3px;
+      background: rgba(163, 153, 106, 0.04);
+    }
+    .partner__card-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 3px;
+      margin-bottom: 18px;
+      display: block;
+    }
+    .partner__card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--stone);
+      margin-bottom: 12px;
+    }
+    .partner__card p {
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--stone);
+      opacity: 0.72;
+    }
+
+    /* ========================================
        FOOTER / LEAD CAPTURE
     ======================================== */
     .footer {
@@ -1269,6 +1327,7 @@
       .opportunity__grid { grid-template-columns: 1fr; max-width: 560px; }
       .concept__inner { grid-template-columns: 1fr; }
       .location__inner { grid-template-columns: 1fr; }
+      .partner__grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 768px) {
@@ -1911,6 +1970,40 @@
               <div class="timeline__dot"></div>
               <div class="timeline__title">Breaking Ground — 2026</div>
               <div class="timeline__desc">Construction begins on the Tiba Tennessee retreat in the Appalachian Highlands.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PARTNER / TAVOLO GROUP ============ -->
+    <section class="partner" id="partner">
+      <div class="container">
+        <div class="section-header" style="text-align: center;">
+          <div class="section-badge reveal">F&B Partner</div>
+          <h2 class="section-title reveal reveal-delay-1">Tavolo Group</h2>
+        </div>
+        <div class="partner__grid">
+          <div class="partner__copy reveal reveal-delay-2">
+            <p>Tiba Living partners with Tavolo Group — Bali’s leading boutique hospitality collective — to bring world-class dining and lifestyle programming to every property we create.</p>
+            <p>They operate 20+ restaurant and hospitality concepts across Bali, and the venues below are three of their most iconic examples.</p>
+            <a href="https://tavologroup.com/" target="_blank" rel="noopener" class="btn-cta">Discover Tavolo Group</a>
+          </div>
+          <div class="partner__cards reveal reveal-delay-3">
+            <div class="partner__card">
+              <img class="partner__card-img" src="https://www.tibaliving.com/Project%20Images/Tavolo/uma-garden.jpg" alt="Uma Garden by Tavolo Group">
+              <h3>Uma Garden</h3>
+              <p>Fire-based kitchen · Kerobokan. A wood-fired sanctuary rooted in community, serving locally sourced seafood, free-range meats, and seasonal vegetables treated simply.</p>
+            </div>
+            <div class="partner__card">
+              <img class="partner__card-img" src="https://www.tibaliving.com/Project%20Images/Tavolo/shun-omakase.jpg" alt="Shun Omakase by Tavolo Group">
+              <h3>Shun Omakase</h3>
+              <p>Edomae sushi · Canggu. An intimate 18-seat counter where Tokyo’s Edomae traditions meet seasonal ingenuity and culinary artistry.</p>
+            </div>
+            <div class="partner__card">
+              <img class="partner__card-img" src="https://www.tibaliving.com/Project%20Images/Tavolo/avocado-factory.jpg" alt="Avocado Factory by Tavolo Group">
+              <h3>Avocado Factory</h3>
+              <p>Avocado bar · Canggu. Bali’s first avocado-dedicated culinary concept, creative, community-driven, and committed to sustainability.</p>
             </div>
           </div>
         </div>
