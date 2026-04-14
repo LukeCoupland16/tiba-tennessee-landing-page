@@ -529,13 +529,13 @@
     }
     .concept__img-1 {
       width: 100%;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 3 / 2;
       object-fit: cover;
       border-radius: 2px;
     }
     .concept__img-2 {
       width: 100%;
-      aspect-ratio: 21 / 9;
+      aspect-ratio: 3 / 2;
       object-fit: cover;
       border-radius: 2px;
     }
@@ -690,7 +690,7 @@
     }
     .showcase__panel-img {
       width: 100%;
-      height: clamp(240px, 30vw, 400px);
+      aspect-ratio: 3 / 2;
       object-fit: cover;
       display: block;
     }
@@ -1358,7 +1358,7 @@
       .footer__links { flex-direction: column; gap: 32px; align-items: center; }
 
       .showcase__panel-images { grid-template-columns: 1fr; }
-      .showcase__panel-img { height: 220px; }
+      .showcase__panel-img { aspect-ratio: 3 / 2; height: auto; }
       .showcase__panel-tagline { display: none; }
       .showcase__panel-header { grid-template-columns: 1fr auto; gap: 16px; }
       .showcase__panel-num { display: none; }
@@ -1367,7 +1367,7 @@
     @media (max-width: 480px) {
       .hero__press-logos { gap: 16px; }
       .hero__press-logos span { font-size: 0.82rem; }
-      .showcase__panel-img { height: 180px; }
+      .showcase__panel-img { aspect-ratio: 3 / 2; height: auto; }
     }
 
     /* ---- About CTA Section ---- */
@@ -1619,12 +1619,12 @@
           </div>
           <div class="concept__images reveal reveal-delay-2">
             <img class="concept__img-1"
-              src="overlap1.jpg"
+              src="gal-1.png"
               sizes="(max-width: 1024px) 85vw, 36vw"
               width="1536" height="1024"
               alt="Aerial view of the infinity lake pool and lakeside suites" loading="lazy" decoding="async">
             <img class="concept__img-2"
-              src="overlap2.jpg"
+              src="gal-2.png"
               sizes="(max-width: 1024px) 65vw, 29vw"
               width="1536" height="1024"
               alt="Luxury suite interior with natural materials" loading="lazy" decoding="async">
@@ -1658,12 +1658,12 @@
               <div class="showcase__panel-content">
                 <div class="showcase__panel-images">
                   <img class="showcase__panel-img"
-                    src="n-suite1.jpg"
+                    src="gal-3.png"
                     sizes="(max-width: 768px) 90vw, 50vw"
                     width="880" height="495"
                     alt="Lakeside suite deck overlooking the lake with fire pit" loading="lazy">
                   <img class="showcase__panel-img"
-                    src="n-suite2.jpg"
+                    src="gal-4.png"
                     sizes="(max-width: 768px) 90vw, 50vw"
                     width="880" height="495"
                     alt="Suite interior with natural materials and fireplace" loading="lazy">
@@ -1714,7 +1714,7 @@
                     width="880" height="495"
                     alt="Fire-cooking kitchen with open flame and artisan ingredients" loading="lazy">
                   <img class="showcase__panel-img"
-                    src="n-lobby2.jpg"
+                    src="gal-5.png"
                     sizes="(max-width: 768px) 90vw, 50vw"
                     width="880" height="495"
                     alt="Chef grilling over open flame with billowing smoke" loading="lazy">
@@ -1874,13 +1874,13 @@
       <div class="container">
         <div class="gallery__scroll reveal reveal-delay-2" id="galleryScroll">
           <div class="gallery__item" data-index="0">
-            <img src="n-suite1.jpg"
+            <img src="gal-3.png"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
               alt="Lakeside suite exterior" loading="lazy" decoding="async">
           </div>
           <div class="gallery__item" data-index="1">
-            <img src="n-suite2.jpg"
+            <img src="gal-4.png"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
               alt="Lakeside suite interior" loading="lazy">
@@ -1892,7 +1892,7 @@
               alt="The lobby" loading="lazy">
           </div>
           <div class="gallery__item" data-index="3">
-            <img src="n-lobby2.jpg"
+            <img src="gal-5.png"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
               alt="The lobby gathering spaces" loading="lazy">
@@ -1904,13 +1904,13 @@
               alt="Tiba Tennessee" loading="lazy">
           </div>
           <div class="gallery__item" data-index="5">
-            <img src="overlap1.jpg"
+            <img src="gal-1.png"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
               alt="Tiba Tennessee retreat" loading="lazy">
           </div>
           <div class="gallery__item" data-index="6">
-            <img src="overlap2.jpg"
+            <img src="gal-2.png"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
               alt="Tiba Tennessee landscape" loading="lazy">
