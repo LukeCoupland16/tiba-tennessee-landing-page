@@ -1060,12 +1060,14 @@
     }
     .partner__grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: clamp(48px, 6vw, 80px);
+      grid-template-columns: 1fr;
+      gap: clamp(40px, 5vw, 64px);
       align-items: start;
     }
     .partner__copy {
       max-width: 560px;
+      margin: 0 auto;
+      text-align: center;
     }
     .partner__copy p {
       font-size: clamp(0.95rem, 1.05vw, 1rem);
@@ -1077,6 +1079,7 @@
     }
     .partner__cards {
       display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
     .partner__card {
@@ -1260,6 +1263,7 @@
       .concept__inner { grid-template-columns: 1fr; }
       .location__inner { grid-template-columns: 1fr; }
       .partner__grid { grid-template-columns: 1fr; }
+      .partner__cards { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 768px) {
@@ -1551,12 +1555,14 @@
           </div>
           <div class="concept__images reveal reveal-delay-2">
             <img class="concept__img-1"
-              src="gal-1.png"
+              src="images/gal-1-1536.webp"
+              srcset="images/gal-1-768.webp 768w, images/gal-1-1536.webp 1536w"
               sizes="(max-width: 1024px) 85vw, 36vw"
               width="1536" height="1024"
               alt="Aerial view of the infinity lake pool and lakeside suites" loading="lazy" decoding="async">
             <img class="concept__img-2"
-              src="gal-2.png"
+              src="images/gal-2-1536.webp"
+              srcset="images/gal-2-768.webp 768w, images/gal-2-1536.webp 1536w"
               sizes="(max-width: 1024px) 65vw, 29vw"
               width="1536" height="1024"
               alt="Luxury suite interior with natural materials" loading="lazy" decoding="async">
@@ -1590,12 +1596,14 @@
               <div class="showcase__panel-content">
                 <div class="showcase__panel-images">
                   <img class="showcase__panel-img"
-                    src="gal-3.png"
+                    src="images/gal-3-1536.webp"
+                    srcset="images/gal-3-768.webp 768w, images/gal-3-1536.webp 1536w"
                     sizes="(max-width: 768px) 90vw, 50vw"
                     width="880" height="495"
                     alt="Lakeside suite deck overlooking the lake with fire pit" loading="lazy">
                   <img class="showcase__panel-img"
-                    src="gal-4.png"
+                    src="images/gal-4-1536.webp"
+                    srcset="images/gal-4-768.webp 768w, images/gal-4-1536.webp 1536w"
                     sizes="(max-width: 768px) 90vw, 50vw"
                     width="880" height="495"
                     alt="Suite interior with natural materials and fireplace" loading="lazy">
@@ -1641,12 +1649,14 @@
               <div class="showcase__panel-content">
                 <div class="showcase__panel-images">
                   <img class="showcase__panel-img"
-                    src="newg4.png"
+                    src="images/newg4-1536.webp"
+                    srcset="images/newg4-768.webp 768w, images/newg4-1536.webp 1536w"
                     sizes="(max-width: 768px) 90vw, 50vw"
                     width="880" height="495"
                     alt="Fire-cooking kitchen with open flame and artisan ingredients" loading="lazy">
                   <img class="showcase__panel-img"
-                    src="newg1.png"
+                    src="images/newg1-1536.webp"
+                    srcset="images/newg1-768.webp 768w, images/newg1-1536.webp 1536w"
                     sizes="(max-width: 768px) 90vw, 50vw"
                     width="880" height="495"
                     alt="Chef grilling over open flame with billowing smoke" loading="lazy">
@@ -1692,7 +1702,8 @@
               <div class="showcase__panel-content">
                 <div class="showcase__panel-images">
                   <img class="showcase__panel-img"
-                    src="newg14.png"
+                    src="images/newg14-1536.webp"
+                    srcset="images/newg14-768.webp 768w, images/newg14-1536.webp 1536w"
                     sizes="(max-width: 768px) 90vw, 50vw"
                     width="880" height="495"
                     alt="Misty Appalachian lake surrounded by autumn foliage" loading="lazy">
@@ -1779,85 +1790,99 @@
       <div class="container">
         <div class="gallery__scroll reveal reveal-delay-2" id="galleryScroll">
           <div class="gallery__item" data-index="0">
-            <img src="newg1.png"
+            <img src="images/newg1-1536.webp"
+              srcset="images/newg1-768.webp 768w, images/newg1-1536.webp 1536w"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
               alt="Tiba Tennessee render 1" loading="lazy" decoding="async">
           </div>
           <div class="gallery__item" data-index="1">
-            <img src="newg2.png"
+            <img src="images/newg2-1536.webp"
+              srcset="images/newg2-768.webp 768w, images/newg2-1536.webp 1536w"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
               alt="Tiba Tennessee render 2" loading="lazy">
           </div>
           <div class="gallery__item" data-index="2">
-            <img src="newg3.png"
+            <img src="images/newg3-1536.webp"
+              srcset="images/newg3-768.webp 768w, images/newg3-1536.webp 1536w"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
               alt="Tiba Tennessee render 3" loading="lazy">
           </div>
           <div class="gallery__item" data-index="3">
-            <img src="newg4.png"
+            <img src="images/newg4-1536.webp"
+              srcset="images/newg4-768.webp 768w, images/newg4-1536.webp 1536w"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
               alt="Tiba Tennessee render 4" loading="lazy">
           </div>
           <div class="gallery__item" data-index="4">
-            <img src="newg5.png"
+            <img src="images/newg5-1536.webp"
+              srcset="images/newg5-768.webp 768w, images/newg5-1536.webp 1536w"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
               alt="Tiba Tennessee render 5" loading="lazy">
           </div>
           <div class="gallery__item" data-index="5">
-            <img src="newg6.png"
+            <img src="images/newg6-1536.webp"
+              srcset="images/newg6-768.webp 768w, images/newg6-1536.webp 1536w"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
               alt="Tiba Tennessee render 6" loading="lazy">
           </div>
           <div class="gallery__item" data-index="6">
-            <img src="newg7.png"
+            <img src="images/newg7-1536.webp"
+              srcset="images/newg7-768.webp 768w, images/newg7-1536.webp 1536w"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
               alt="Tiba Tennessee render 7" loading="lazy">
           </div>
           <div class="gallery__item" data-index="7">
-            <img src="newg8.png"
+            <img src="images/newg8-1536.webp"
+              srcset="images/newg8-768.webp 768w, images/newg8-1536.webp 1536w"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
               alt="Tiba Tennessee render 8" loading="lazy">
           </div>
           <div class="gallery__item" data-index="8">
-            <img src="newg9.png"
+            <img src="images/newg9-1536.webp"
+              srcset="images/newg9-768.webp 768w, images/newg9-1536.webp 1536w"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
               alt="Tiba Tennessee render 9" loading="lazy">
           </div>
           <div class="gallery__item" data-index="9">
-            <img src="newg10.png"
+            <img src="images/newg10-1536.webp"
+              srcset="images/newg10-768.webp 768w, images/newg10-1536.webp 1536w"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
               alt="Tiba Tennessee render 10" loading="lazy">
           </div>
           <div class="gallery__item" data-index="10">
-            <img src="newg11.png"
+            <img src="images/newg11-1536.webp"
+              srcset="images/newg11-768.webp 768w, images/newg11-1536.webp 1536w"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
               alt="Tiba Tennessee render 11" loading="lazy">
           </div>
           <div class="gallery__item" data-index="11">
-            <img src="newg12.png"
+            <img src="images/newg12-1536.webp"
+              srcset="images/newg12-768.webp 768w, images/newg12-1536.webp 1536w"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
               alt="Tiba Tennessee render 12" loading="lazy">
           </div>
           <div class="gallery__item" data-index="12">
-            <img src="newg13.png"
+            <img src="images/newg13-1536.webp"
+              srcset="images/newg13-768.webp 768w, images/newg13-1536.webp 1536w"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
               alt="Tiba Tennessee render 13" loading="lazy">
           </div>
           <div class="gallery__item" data-index="13">
-            <img src="newg14.png"
+            <img src="images/newg14-1536.webp"
+              srcset="images/newg14-768.webp 768w, images/newg14-1536.webp 1536w"
               sizes="(max-width: 768px) 80vw, clamp(320px, 42vw, 560px)"
               width="1120" height="630"
               alt="Tiba Tennessee render 14" loading="lazy">
